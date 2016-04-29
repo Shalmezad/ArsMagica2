@@ -3,6 +3,11 @@ ArsMagica2
 
 Ars Magica 2 Repository
 
+### IRC
+ #ArsMagica on Espernet
+
+Webchat link: http://webchat.esper.net/?nick=&channels=ArsMagica
+
 ### Useful Links
 * [Homepage](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1292222)
 * [Unofficial Wiki](http://am2.wikia.com/wiki/Ars_Magica_2_Wiki)
