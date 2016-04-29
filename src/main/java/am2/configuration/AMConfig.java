@@ -2,8 +2,8 @@ package am2.configuration;
 
 import am2.LogHelper;
 import am2.api.math.AMVector2;
-import am2.particles.AMParticle;
-import am2.particles.ParticleController;
+//import am2.particles.AMParticle;
+//import am2.particles.ParticleController;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.config.Configuration;
@@ -376,9 +376,9 @@ public class AMConfig extends Configuration{
 
 	public void clientInit(){
 		AuraType = get(CATEGORY_BETA, KEY_AuraType, 15).getInt(15);
-		AuraType %= AMParticle.particleTypes.length;
+		//AuraType %= AMParticle.particleTypes.length;
 		AuraBehaviour = get(CATEGORY_BETA, KEY_AuraBehaviour, 0).getInt(0);
-		AuraBehaviour %= ParticleController.AuraControllerOptions.length;
+		//AuraBehaviour %= ParticleController.AuraControllerOptions.length;
 		AuraAlpha = (float)(get(CATEGORY_BETA, KEY_AuraAlpha, 1.0D)).getDouble(1.0D);
 		AuraScale = (float)(get(CATEGORY_BETA, KEY_AuraScale, 1.0D).getDouble(1.0));
 		AuraColor = get(CATEGORY_BETA, KEY_AuraColor, 0xFFFFFF).getInt(0xFFFFFF);
@@ -783,7 +783,7 @@ public class AMConfig extends Configuration{
 
 	public void setAuraIndex(int index){
 		if (index < 0) index = 0;
-		if (index >= AMParticle.particleTypes.length) index = AMParticle.particleTypes.length - 1;
+		//if (index >= AMParticle.particleTypes.length) index = AMParticle.particleTypes.length - 1;
 
 		Property prop = get(CATEGORY_BETA, KEY_AuraType, 15);
 		prop.set(index);
@@ -793,8 +793,8 @@ public class AMConfig extends Configuration{
 
 	public void setAuraBehaviour(int index){
 		if (index < 0) index = 0;
-		if (index >= ParticleController.AuraControllerOptions.length)
-			index = ParticleController.AuraControllerOptions.length - 1;
+		//if (index >= ParticleController.AuraControllerOptions.length)
+		//	index = ParticleController.AuraControllerOptions.length - 1;
 
 		Property prop = get(CATEGORY_BETA, KEY_AuraBehaviour, 0);
 		prop.set(index);

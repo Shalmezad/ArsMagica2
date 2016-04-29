@@ -1,5 +1,6 @@
 package am2;
 
+/*
 import am2.api.ArsMagicaApi;
 import am2.api.spell.enums.Affinity;
 import am2.armor.infusions.ImbuementRegistry;
@@ -8,7 +9,6 @@ import am2.blocks.liquid.BlockLiquidEssence;
 import am2.blocks.tileentities.flickers.*;
 import am2.buffs.BuffList;
 import am2.commands.*;
-import am2.configuration.AMConfig;
 import am2.configuration.SkillConfiguration;
 import am2.enchantments.AMEnchantmentHelper;
 import am2.entities.EntityManager;
@@ -28,6 +28,8 @@ import am2.spell.SkillTreeManager;
 import am2.spell.SpellUtils;
 import am2.utility.KeystoneUtilities;
 import am2.worldgen.BiomeWitchwoodForest;
+*/
+import am2.configuration.AMConfig;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -52,17 +54,24 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 import java.io.File;
 
-@Mod(modid = "arsmagica2", modLanguage = "java", name = "Ars Magica 2", version = "1.4.0.009", dependencies = "required-after:AnimationAPI")
+@Mod(modid = AMCore.MOD_ID, modLanguage = AMCore.MOD_LANGUAGE, name = AMCore.NAME, version = AMCore.VERSION, dependencies = AMCore.DEPENDENCIES)
 public class AMCore{
+
+	public static final String MOD_ID = "arsmagica2";
+	public static final String MOD_LANGUAGE = "java";
+	public static final String NAME = "Ars Magica 2";
+	public static final String VERSION = "1.4.0.009";
+	//public static final String DEPENDENCIES = "required-after:AnimationAPI";
+	public static final String DEPENDENCIES = "";
 
 	@Instance(value = "arsmagica2")
 	public static AMCore instance;
 
-	@SidedProxy(clientSide = "am2.proxy.ClientProxy", serverSide = "am2.proxy.CommonProxy")
-	public static CommonProxy proxy;
+	//@SidedProxy(clientSide = "am2.proxy.ClientProxy", serverSide = "am2.proxy.CommonProxy")
+	//public static CommonProxy proxy;
 
 	public static AMConfig config;
-	public static SkillConfiguration skillConfig;
+	//public static SkillConfiguration skillConfig;
 	public static final int ANY_META = 32767;
 
 	private String compendiumBase;
@@ -81,12 +90,14 @@ public class AMCore{
 
 		config = new AMConfig(new File(configBase + File.separatorChar + "AM2.cfg"));
 
+		/*
 		skillConfig = new SkillConfiguration(new File(configBase + "SkillConf.cfg"));
 
 		AMNetHandler.INSTANCE.init();
 
 		proxy.InitializeAndRegisterHandlers();
 		proxy.preinit();
+		*/
 	}
 
 	private String popPathFolder(String path){
@@ -102,29 +113,31 @@ public class AMCore{
 		FMLInterModComms.sendMessage("Waila", "register", "am2.interop.WailaSupport.callbackRegister");
         FMLInterModComms.sendMessage("Thaumcraft", "portableHoleBlacklist", "am2:everstone");
 
+		/*
 		ForgeChunkManager.setForcedChunkLoadingCallback(this, AMChunkLoader.INSTANCE);
 		proxy.init();
-
+		*/
 		initAPI();
 
 		if (AMCore.config.getEnableWitchwoodForest()){
-			BiomeDictionary.registerBiomeType(BiomeWitchwoodForest.instance, Type.FOREST, Type.MAGICAL);
-			BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeEntry(BiomeWitchwoodForest.instance, 6));
+			//BiomeDictionary.registerBiomeType(BiomeWitchwoodForest.instance, Type.FOREST, Type.MAGICAL);
+			//BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeEntry(BiomeWitchwoodForest.instance, 6));
 		}
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
 		//Register Flicker Operators
-		registerFlickerOperators();
+		//registerFlickerOperators();
 
-		proxy.setCompendiumSaveBase(compendiumBase);
-		proxy.postinit();
+		//proxy.setCompendiumSaveBase(compendiumBase);
+		//proxy.postinit();
 
 		if (config.retroactiveWorldgen()){
 			LogHelper.info("Retroactive Worldgen is enabled");
 		}
 
+		/*
 		FluidContainerRegistry.registerFluidContainer(
 				new FluidContainerData(
 						FluidRegistry.getFluidStack(BlockLiquidEssence.liquidEssenceFluid.getName(), FluidContainerRegistry.BUCKET_VOLUME),
@@ -132,15 +145,17 @@ public class AMCore{
 						FluidContainerRegistry.EMPTY_BUCKET));
 
 		SeventhSanctum.instance.init();
+		*/
 		/*if (Loader.isModLoaded("BetterDungeons"))
 			BetterDungeons.init();*/
-		if (Loader.isModLoaded("Thaumcraft"))
-			TC5Interop.initialize();
+		//if (Loader.isModLoaded("Thaumcraft"))
+		//	TC5Interop.initialize();
 		/*if (Loader.isModLoaded("MineFactoryReloaded"))
 			MFRInterop.init();*/
 
 	}
 
+	/*
 	private void registerFlickerOperators(){
 		FlickerOperatorRegistry.instance.registerFlickerOperator(
 				new FlickerOperatorItemTransport(),
@@ -195,7 +210,9 @@ public class AMCore{
 				Affinity.WATER, Affinity.NATURE
 		);
 	}
+	*/
 
+	/*
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event){
 		ICommandManager commandManager = event.getServer().getCommandManager();
@@ -216,11 +233,12 @@ public class AMCore{
 		serverCommandManager.registerCommand(new Respec());
 		serverCommandManager.registerCommand(new UnlockCompendiumEntry());
 	}
+	*/
 
 	@EventHandler
 	public void serverStopping(FMLServerStoppingEvent event){
 		for (WorldServer ws : MinecraftServer.getServer().worldServers){
-			PowerNodeCache.instance.saveWorldToFile(ws);
+			//PowerNodeCache.instance.saveWorldToFile(ws);
 		}
 	}
 
@@ -235,7 +253,7 @@ public class AMCore{
 					continue;
 				}
 				try{
-					SpawnBlacklists.addBlacklistedDimensionSpawn(split[0], Integer.parseInt(split[1]));
+					//SpawnBlacklists.addBlacklistedDimensionSpawn(split[0], Integer.parseInt(split[1]));
 				}catch (NumberFormatException nex){
 					LogHelper.warn("Could not parse dsb IMC - improper dimension ID (not a number)!  Syntax is 'ClassName|DimensionID', for example:  EntityDryad|22");
 				}
@@ -247,21 +265,21 @@ public class AMCore{
 					continue;
 				}
 				try{
-					SpawnBlacklists.addBlacklistedBiomeSpawn(split[0], Integer.parseInt(split[1]));
+					//SpawnBlacklists.addBlacklistedBiomeSpawn(split[0], Integer.parseInt(split[1]));
 				}catch (NumberFormatException nex){
 					LogHelper.warn("Could not parse bsb IMC - improper biome ID (not a number)!  Syntax is 'ClassName|BiomeID', for example:  EntityDryad|22");
 				}
 			}else if (msg.key == "dwg"){
 				LogHelper.info("Received dimension worldgen blacklist IMC!  Processing.");
 				try{
-					SpawnBlacklists.addBlacklistedDimensionForWorldgen(Integer.parseInt(msg.getStringValue()));
+					//SpawnBlacklists.addBlacklistedDimensionForWorldgen(Integer.parseInt(msg.getStringValue()));
 				}catch (NumberFormatException nex){
 					LogHelper.warn("Could not parse dwg IMC - improper dimension ID (not a number)!  Syntax is 'dimensionID', for example:  2");
 				}
 			}else if (msg.key == "adb"){
 				LogHelper.info("Received dispel blacklist IMC!  Processing.");
 				try{
-					BuffList.instance.addDispelExclusion(new ResourceLocation(msg.getStringValue()));
+					//BuffList.instance.addDispelExclusion(new ResourceLocation(msg.getStringValue()));
 				}catch (NumberFormatException nex){
 					LogHelper.warn("Could not parse adb IMC - improper potion ID (not a number)!  Syntax is 'potionID', for example:  10");
 				}
@@ -271,6 +289,7 @@ public class AMCore{
 
 	public void initAPI(){
 		LogHelper.info("Initializing API Hooks...");
+		/*
 		ArsMagicaApi.instance.setSpellPartManager(SkillManager.instance);
 		ArsMagicaApi.instance.setEnchantmentHelper(new AMEnchantmentHelper());
 		ArsMagicaApi.instance.setSkillTreeManager(SkillTreeManager.instance);
@@ -288,6 +307,7 @@ public class AMCore{
 		ArsMagicaApi.instance.setSkillDataID(SkillData.identifier);
 		ArsMagicaApi.instance.setExtendedPropertiesID(ExtendedProperties.identifier);
 		ArsMagicaApi.instance.setRiftStorageID(RiftStorage.identifier);
+		*/
 		LogHelper.info("Finished API Initialization");
 	}
 

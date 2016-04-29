@@ -205,6 +205,7 @@ public class AMVector3{
 	/**
 	 * Writes the vector3 to the specified compound - note that the way this function works, only one vector3 can be written to a compound at a time.
 	 * Use sub-compounds if you need more!
+	 * @param compound the nbt compound to write the vector to
 	 */
 	public void writeToNBT(NBTTagCompound compound){
 		compound.setFloat("Vec3_x", x);
