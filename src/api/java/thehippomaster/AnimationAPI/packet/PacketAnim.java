@@ -2,14 +2,13 @@ package thehippomaster.AnimationAPI.packet;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import thehippomaster.AnimationAPI.AnimationAPI;
 import thehippomaster.AnimationAPI.IAnimatedEntity;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.network.simpleimpl.IMessage;
-import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
-import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketAnim implements IMessage {
+public class PacketAnim implements IMessage{
 	
 	private byte animID;
 	private int entityID;
@@ -34,7 +33,7 @@ public class PacketAnim implements IMessage {
 		entityID = buffer.readInt();
 	}
 
-	public static class Handler implements IMessageHandler<PacketAnim, IMessage> {
+	public static class Handler implements IMessageHandler<PacketAnim, IMessage>{
 		@Override
 		public IMessage onMessage(PacketAnim packet, MessageContext ctx) {
 			World world = AnimationAPI.proxy.getWorldClient();

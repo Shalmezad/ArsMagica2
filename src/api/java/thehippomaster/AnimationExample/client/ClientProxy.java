@@ -1,11 +1,13 @@
 package thehippomaster.AnimationExample.client;
 
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thehippomaster.AnimationExample.CommonProxy;
 import thehippomaster.AnimationExample.EntityTest;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
+//If you can't make it work... ¯\_(ツ)_/¯
+/*
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 	
@@ -13,3 +15,4 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityTest.class, new RenderTest());
 	}
 }
+*/

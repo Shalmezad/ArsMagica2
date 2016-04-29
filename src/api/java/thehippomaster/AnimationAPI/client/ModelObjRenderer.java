@@ -1,15 +1,14 @@
 package thehippomaster.AnimationAPI.client;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraftforge.client.model.IModelCustom;
 
 /**
  * ModelObjRenderer.java
@@ -26,15 +25,17 @@ public class ModelObjRenderer extends ModelRenderer {
 	public ModelObjRenderer(ModelBase bass) {
 		this(bass, null, 1F);
 	}
-	
-	public ModelObjRenderer(ModelBase bass, IModelCustom shape) {
+
+	//NOTE: Object was IModelCustom, which doesn't appear to be in forge anymore
+	//Changed to Object so calls will still work, but they won't do anything.
+	public ModelObjRenderer(ModelBase bass, Object shape) {
 		this(bass, shape, 1F);
 	}
 	
-	public ModelObjRenderer(ModelBase bass, IModelCustom shape, float scale) {
+	public ModelObjRenderer(ModelBase bass, Object shape, float scale) {
 		super(bass);
 		theScale = scale;
-		model = shape;
+		//model = shape;
 	}
 	
 	public void setScale(float scale) {
@@ -177,14 +178,14 @@ public class ModelObjRenderer extends ModelRenderer {
 		GL11.glPushMatrix();
 		GL11.glScalef(0.76F, 0.76F, 0.76F);
 		GL11.glRotatef(180F, 1F, 0F, 0F);
-		model.renderAll();
+		//model.renderAll();
 		GL11.glPopMatrix();
 		
 		GL11.glEndList();
 		compiled = true;
 	}
 	
-	public IModelCustom model;
+	//public IModelCustom model;
 	private float theScale;
 	
 	private int displayList;
