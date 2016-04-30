@@ -1,5 +1,6 @@
 package am2.blocks;
 
+import am2.AMCore;
 import am2.AMCreativeTab;
 //import am2.api.blocks.IKeystoneLockable;
 import am2.api.math.AMVector3;
@@ -13,6 +14,8 @@ import am2.spell.components.Dig;
 import am2.utility.KeystoneUtilities;
 import am2.utility.RecipeUtilities;
 */
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -906,5 +909,7 @@ public class BlocksCommonProxy{
 	}
 
 	public void registerRenderInformation(){
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+			.register(Item.getItemFromBlock(witchwoodLog), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodlog", "inventory"));
 	}
 }

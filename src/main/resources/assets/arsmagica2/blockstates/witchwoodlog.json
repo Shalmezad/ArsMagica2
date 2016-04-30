@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y":    { "model": "arsmagica2:WitchwoodLog" },
+    "axis=z":     { "model": "arsmagica2:WitchwoodLog" },
+    "axis=x":     { "model": "arsmagica2:WitchwoodLog", "y": 90 },
+    "axis=none":   { "model": "arsmagica2:WitchwoodLog"}
+  }
+}
