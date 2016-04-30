@@ -22,7 +22,6 @@ import am2.playerextensions.ExtendedProperties;
 import am2.playerextensions.RiftStorage;
 import am2.playerextensions.SkillData;
 import am2.power.PowerNodeCache;
-import am2.proxy.CommonProxy;
 import am2.spell.SkillManager;
 import am2.spell.SkillTreeManager;
 import am2.spell.SpellUtils;
@@ -30,6 +29,7 @@ import am2.utility.KeystoneUtilities;
 import am2.worldgen.BiomeWitchwoodForest;
 */
 import am2.configuration.AMConfig;
+import am2.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -67,8 +67,8 @@ public class AMCore{
 	@Instance(value = "arsmagica2")
 	public static AMCore instance;
 
-	//@SidedProxy(clientSide = "am2.proxy.ClientProxy", serverSide = "am2.proxy.CommonProxy")
-	//public static CommonProxy proxy;
+	@SidedProxy(clientSide = "am2.proxy.ClientProxy", serverSide = "am2.proxy.CommonProxy")
+	public static CommonProxy proxy;
 
 	public static AMConfig config;
 	//public static SkillConfiguration skillConfig;
@@ -94,10 +94,10 @@ public class AMCore{
 		skillConfig = new SkillConfiguration(new File(configBase + "SkillConf.cfg"));
 
 		AMNetHandler.INSTANCE.init();
-
-		proxy.InitializeAndRegisterHandlers();
-		proxy.preinit();
 		*/
+
+		//proxy.InitializeAndRegisterHandlers();
+		proxy.preinit();
 	}
 
 	private String popPathFolder(String path){
@@ -115,8 +115,8 @@ public class AMCore{
 
 		/*
 		ForgeChunkManager.setForcedChunkLoadingCallback(this, AMChunkLoader.INSTANCE);
-		proxy.init();
 		*/
+		proxy.init();
 		initAPI();
 
 		if (AMCore.config.getEnableWitchwoodForest()){
@@ -131,7 +131,7 @@ public class AMCore{
 		//registerFlickerOperators();
 
 		//proxy.setCompendiumSaveBase(compendiumBase);
-		//proxy.postinit();
+		proxy.postinit();
 
 		if (config.retroactiveWorldgen()){
 			LogHelper.info("Retroactive Worldgen is enabled");

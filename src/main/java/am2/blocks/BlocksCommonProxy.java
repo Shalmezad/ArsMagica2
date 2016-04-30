@@ -1,8 +1,9 @@
 package am2.blocks;
 
 import am2.AMCreativeTab;
-import am2.api.blocks.IKeystoneLockable;
+//import am2.api.blocks.IKeystoneLockable;
 import am2.api.math.AMVector3;
+/*
 import am2.blocks.liquid.BlockLiquidEssence;
 import am2.blocks.tileentities.*;
 import am2.items.ItemsCommonProxy;
@@ -11,6 +12,7 @@ import am2.spell.SkillManager;
 import am2.spell.components.Dig;
 import am2.utility.KeystoneUtilities;
 import am2.utility.RecipeUtilities;
+*/
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.fml.common.registry.GameData;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -36,7 +38,7 @@ public class BlocksCommonProxy{
 	// Blocks
 	//--------------------------------------------------------------
 	public static Block essenceRefiner;
-	public static IllusionBlock illusionBlock;
+	//public static IllusionBlock illusionBlock;
 	public static Block blockMageTorch;
 	public static Block essenceConduit;
 	public static Block obelisk;
@@ -44,18 +46,21 @@ public class BlocksCommonProxy{
 	public static Block celestialPrism;
 	//public static Block caster;
 	public static Block calefactor;
-	public static BlockKeystoneReceptacle keystoneRecepticle;
+	//public static BlockKeystoneReceptacle keystoneRecepticle;
 	public static Block astralBarrier;
 	public static Block seerStone;
+	/*
 	public static BlockAMOre AMOres;
 	public static AMFlower cerublossom;
 	public static BlockDesertNova desertNova;
 	public static BlockKeystoneChest keystoneChest;
+	*/
 	public static Block blockLectern;
 	public static Block blockArcaneReconstructor;
 	public static Block manaBattery;
 	public static Block magicWall;
 	public static Block occulus;
+	/*
 	public static BlockCraftingAltar craftingAltar;
 	public static BlockGroundRuneSpell spellRune;
 	public static BlockParticleEmitter particleEmitter;
@@ -66,7 +71,9 @@ public class BlocksCommonProxy{
 	public static AMFlower aum;
 	public static BlockWakebloom wakebloom;
 	public static BlockTarmaRoot tarmaRoot;
+	*/
 	public static BlockWitchwoodLog witchwoodLog;
+	/*
 	public static BlockWitchwoodLeaves witchwoodLeaves;
 	public static BlockSummoner summoner;
 	public static BlockLiquidEssence liquidEssence;
@@ -94,6 +101,7 @@ public class BlocksCommonProxy{
 	public static BlockArcaneDeconstructor arcaneDeconstructor;
 	public static BlockOtherworldAura otherworldAura;
 	public static BlockSpellSealedDoor spellSealedDoor;
+	*/
 
 	//--------------------------------------------------------------
 	// End Blocks
@@ -167,11 +175,13 @@ public class BlocksCommonProxy{
 
 		while (!newLocation.equals(location)){
 			TileEntity te = world.getTileEntity(pos);
+			/*
 			if (te != null && te instanceof TileEntityKeystoneRecepticle){
 				if (KeystoneUtilities.instance.getKeyFromRunes(((IKeystoneLockable)te).getRunesInKey()) == key){
 					return newLocation;
 				}
 			}
+			*/
 			index++;
 			if (index >= dimensionList.size()) index = 0;
 			newLocation = dimensionList.get(index);
@@ -185,6 +195,7 @@ public class BlocksCommonProxy{
 	}
 
 	public void InstantiateBlocks(){
+		/*
 		essenceRefiner = new BlockEssenceRefiner().setUnlocalizedNameAndID("arsmagica2:essence_refiner").setCreativeTab(blockTab);
 		blockMageTorch = new BlockMageLight().setUnlocalizedNameAndID("arsmagica2:magetorch").setCreativeTab(blockTab);
 		illusionBlock = (IllusionBlock)new IllusionBlock().setUnlocalizedNameAndID("arsmagica2:illusionBlock").setCreativeTab(blockTab);
@@ -214,7 +225,9 @@ public class BlocksCommonProxy{
 		aum = (AMFlower)new AMFlower().setUnlocalizedNameAndID("arsmagica2:aum").setCreativeTab(blockTab);
 		wakebloom = (BlockWakebloom)new BlockWakebloom().setUnlocalizedNameAndID("arsmagica2:wakebloom").setCreativeTab(blockTab);
 		tarmaRoot = (BlockTarmaRoot)new BlockTarmaRoot().setUnlocalizedNameAndID("arsmagica2:tarmaroot").setCreativeTab(blockTab);
+		*/
 		witchwoodLog = (BlockWitchwoodLog)new BlockWitchwoodLog().setRegistryName("arsmagica2:witchwoodlog").setCreativeTab(blockTab);
+		/*
 		witchwoodLeaves = (BlockWitchwoodLeaves)new BlockWitchwoodLeaves().setRegistryName("arsmagica2:witchwoodleaves").setCreativeTab(blockTab);
 		summoner = (BlockSummoner)new BlockSummoner().setUnlocalizedNameAndID("arsmagica2:summoner").setCreativeTab(blockTab);
 		liquidEssence = (BlockLiquidEssence)new BlockLiquidEssence().setRegistryName("arsmagica2:liquidEssence");
@@ -242,13 +255,15 @@ public class BlocksCommonProxy{
 		arcaneDeconstructor = (BlockArcaneDeconstructor)new BlockArcaneDeconstructor().setRegistryName("arsmagica2:arcane_deconstructor").setCreativeTab(blockTab);
 		otherworldAura = (BlockOtherworldAura)new BlockOtherworldAura().setRegistryName("arsmagica2:otherworld_aura").setCreativeTab(blockTab);
 		spellSealedDoor = (BlockSpellSealedDoor)new BlockSpellSealedDoor().setRegistryName("arsmagica2:spell_sealed_door");
-
-		blockTab.setIconItemIndex(new ItemBlock(manaBattery));
+		*/
+		//blockTab.setIconItemIndex(new ItemBlock(manaBattery));
+		//manaBattery isn't defined yet, so we'll go with this for the time being
+		blockTab.setIconItemIndex(Items.ender_eye);
 	}
 
 	public void setupSpellConstraints(){
-		Dig dug = ((Dig)SkillManager.instance.getSkill("Dig"));
-		dug.addDisallowedBlock(invisibleUtility.getUnlocalizedName());
+		//Dig dug = ((Dig)SkillManager.instance.getSkill("Dig"));
+		//dug.addDisallowedBlock(invisibleUtility.getUnlocalizedName());
 	}
 
 	public void InitRecipes(){
@@ -274,12 +289,14 @@ public class BlocksCommonProxy{
 		}));
 
 		//summoner
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(summoner, 1), new Object[]{
 				"GVG", "GOG", "OOO",
 				Character.valueOf('G'), "ingotGold",
 				Character.valueOf('O'), Blocks.obsidian,
 				Character.valueOf('V'), "dustVinteum"
 		}));
+		*/
 
 		//Calefactor
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(calefactor, 1), new Object[]{
@@ -293,6 +310,7 @@ public class BlocksCommonProxy{
 		}));
 
 		//keystone recepticle
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(keystoneRecepticle, 1), new Object[]{
 				"SVS", "EPE", "SVS",
 				Character.valueOf('P'), new ItemStack(ItemsCommonProxy.essence, 1, 9),
@@ -300,6 +318,7 @@ public class BlocksCommonProxy{
 				Character.valueOf('E'), Items.ender_eye,
 				Character.valueOf('V'), "dustVinteum"
 		}));
+		*/
 
 		//astral barrier
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(astralBarrier, 1), new Object[]{
@@ -317,12 +336,14 @@ public class BlocksCommonProxy{
 				Character.valueOf('R'), "dustRedstone"
 		}));
 
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(keystoneChest), new Object[]{
 				"WRW", "WVW", "WRW",
 				Character.valueOf('W'), "plankWood",
 				Character.valueOf('R'), new ItemStack(ItemsCommonProxy.rune, 1, 0),
 				Character.valueOf('V'), "dustVinteum"
 		}));
+		*/
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockLectern), new Object[]{
 				"SSS", " P ",
@@ -338,6 +359,7 @@ public class BlocksCommonProxy{
 				Character.valueOf('V'), "gemBlueTopaz"
 		}));
 
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(blockArcaneReconstructor), new Object[]{
 				"SWS", "VDV", "SOS",
 				Character.valueOf('S'), "stone",
@@ -346,7 +368,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('W'), BlocksCommonProxy.magicWall,
 				Character.valueOf('O'), Blocks.obsidian
 		}));
+		*/
 
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(arcaneDeconstructor), new Object[]{
 				"IGR",
 				"WDW",
@@ -357,7 +381,8 @@ public class BlocksCommonProxy{
 				Character.valueOf('W'), witchwoodPlanks,
 				Character.valueOf('D'), ItemsCommonProxy.deficitCrystal
 		}));
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(flickerLure), new Object[]{
 				"CIV",
 				"SSS",
@@ -366,6 +391,7 @@ public class BlocksCommonProxy{
 				Character.valueOf('V'), "dustVinteum",
 				Character.valueOf('S'), Blocks.stonebrick
 		}));
+		*/
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(manaBattery), new Object[]{
 				"IVI",
@@ -382,13 +408,15 @@ public class BlocksCommonProxy{
 				Character.valueOf('S'), "stone"
 		}));
 
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(craftingAltar), new Object[]{
 				"V",
 				"S",
 				Character.valueOf('V'), "dustVinteum",
 				Character.valueOf('S'), "stone"
 		}));
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(vinteumTorch, 4), new Object[]{
 				"V",
 				"S",
@@ -406,6 +434,7 @@ public class BlocksCommonProxy{
 				Character.valueOf('S'), "slabWood",
 				Character.valueOf('W'), "plankWood"
 		}));
+		*/
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 3), new Object[]{
 				"SS",
@@ -414,7 +443,7 @@ public class BlocksCommonProxy{
 		});
 
 		//Inlays
-
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(redstoneInlay, 4, 0), new Object[]{
 				"RRR",
 				"RVR",
@@ -422,7 +451,8 @@ public class BlocksCommonProxy{
 				Character.valueOf('R'), "dustRedstone",
 				Character.valueOf('V'), "dustVinteum"
 		}));
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ironInlay, 4, 0), new Object[]{
 				"III",
 				"IVI",
@@ -438,7 +468,8 @@ public class BlocksCommonProxy{
 				Character.valueOf('G'), "ingotGold",
 				Character.valueOf('V'), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_PURIFIEDVINTEUM)
 		}));
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(particleEmitter), new Object[]{
 				" C ",
 				"CIC",
@@ -451,7 +482,8 @@ public class BlocksCommonProxy{
 				"W",
 				Character.valueOf('W'), witchwoodLog
 		});
-
+		*/
+		/*
 		RecipeUtilities.addShapedRecipeFirst(recipes, new ItemStack(witchwoodSingleSlab, 6), new Object[]{
 				"WWW",
 				Character.valueOf('W'), witchwoodPlanks
@@ -463,7 +495,8 @@ public class BlocksCommonProxy{
 				"WWW",
 				Character.valueOf('W'), witchwoodPlanks
 		});
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(everstone), new Object[]{
 				" B ",
 				"CSC",
@@ -484,7 +517,8 @@ public class BlocksCommonProxy{
 				Character.valueOf('L'), "plankWood",
 				Character.valueOf('H'), "chestWood"
 		}));
-
+		*/
+		/*
 		GameRegistry.addRecipe(new ItemStack(slipstreamGenerator), new Object[]{
 				"WWW",
 				"FAF",
@@ -503,7 +537,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('D'), "dustVinteum",
 				Character.valueOf('B'), new ItemStack(AMOres, 1, AMOres.META_CHIMERITE_BLOCK)
 		}));
+		*/
 
+		/*
 		//Import Gem
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_IN), new Object[]{
 				" G ",
@@ -512,8 +548,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('G'), "gemBlueTopaz",
 				Character.valueOf('D'), "dyeYellow" //Yellow Dye
 		}));
+		*/
 
-
+		/*
 		//Export Gem
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_OUT), new Object[]{
 				" G ",
@@ -531,7 +568,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('G'), "gemBlueTopaz",
 				Character.valueOf('D'), "dyeGray" //Lapis
 		}));
+		*/
 
+		/*
 		//Like Export Gem
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_LIKE_EXPORT), new Object[]{
 				"GDG",
@@ -551,7 +590,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('D'), "dyePurple", //Purple Dye
 				Character.valueOf('E'), new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_OUT)
 		}));
+		*/
 
+		/*
 		//Set Export Gem
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_SET_EXPORT), new Object[]{
 				"GDG",
@@ -572,7 +613,9 @@ public class BlocksCommonProxy{
 				Character.valueOf('D'), "dyeOrange",
 				Character.valueOf('E'), new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_REGULATE_EXPORT)
 		}));
+		*/
 
+		/*
 		//Set Export Gem
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_SET_IMPORT), new Object[]{
 				"DSD",
@@ -594,12 +637,14 @@ public class BlocksCommonProxy{
 				Character.valueOf('C'), "dyeCyan",
 				Character.valueOf('R'), new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_REGULATE_MULTI)
 		}));
+		*/
 
 		//Gem Conversions
+		/*
 		createTier2GemConverstionRecipies(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_LIKE_EXPORT), "dyeGreen");
 		createTier2GemConverstionRecipies(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_REGULATE_EXPORT), "dyePurple");
 		createTier2GemConverstionRecipies(new ItemStack(crystalMarker, 1, BlockCrystalMarker.META_SET_EXPORT), "dyeLightBlue");
-
+		*/
 		//Obelisk
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(obelisk), new Object[]{
 				"VSV",
@@ -610,6 +655,7 @@ public class BlocksCommonProxy{
 				Character.valueOf('C'), new ItemStack(Blocks.stonebrick, 1, 3)
 		}));
 
+		/*
 		//Armor Infuser
 		GameRegistry.addRecipe(new ItemStack(armorInfuser), new Object[]{
 				"ACA",
@@ -620,15 +666,18 @@ public class BlocksCommonProxy{
 				Character.valueOf('O'), Blocks.obsidian,
 				Character.valueOf('P'), Blocks.enchanting_table
 		});
+		*/
 
 		//storage blocks
+		/*
 		createStorageBlockRecipe(new ItemStack(AMOres, 1, AMOres.META_MOONSTONE_BLOCK), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_MOONSTONE));
 		createStorageBlockRecipe(new ItemStack(AMOres, 1, AMOres.META_VINTEUM_BLOCK), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_VINTEUMDUST));
 		createStorageBlockRecipe(new ItemStack(AMOres, 1, AMOres.META_BLUE_TOPAZ_BLOCK), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_BLUETOPAZ));
 		createStorageBlockRecipe(new ItemStack(AMOres, 1, AMOres.META_SUNSTONE_BLOCK), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_SUNSTONE));
 		createStorageBlockRecipe(new ItemStack(AMOres, 1, AMOres.META_CHIMERITE_BLOCK), new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_CHIMERITE));
-
+		*/
 		//furnace recipes
+		/*
 		GameRegistry.addSmelting(new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_ARCANECOMPOUND), new ItemStack(ItemsCommonProxy.itemOre, 2, ItemsCommonProxy.itemOre.META_ARCANEASH), 0);
 
 		addMetaSmeltingRecipe(AMOres, AMOres.META_VINTEUM_ORE, new ItemStack(ItemsCommonProxy.itemOre, 1, ItemsCommonProxy.itemOre.META_VINTEUMDUST));
@@ -655,6 +704,7 @@ public class BlocksCommonProxy{
 
 		GameRegistry.addRecipe(new ItemStack(illusionBlock, illusionBlock.GetCraftingQuantity(), 0), illusionBlock.GetRecipeComponents(false));
 		GameRegistry.addRecipe(new ItemStack(illusionBlock, illusionBlock.GetCraftingQuantity(), 1), illusionBlock.GetRecipeComponents(true));
+		*/
 	}
 
 	private void addMetaSmeltingRecipe(Block input, int meta, ItemStack output){
@@ -674,6 +724,7 @@ public class BlocksCommonProxy{
 		GameRegistry.addShapelessRecipe(new ItemStack(storageItem.getItem(), 9, storageItem.getItemDamage()), storageBlock);
 	}
 
+	/*
 	private void createTier2GemConverstionRecipies(ItemStack stack, String dyeCode){
 		if (stack.getItemDamage() != BlockCrystalMarker.META_LIKE_EXPORT){
 			GameRegistry.addRecipe(new ShapelessOreRecipe(stack, new Object[]{
@@ -696,27 +747,37 @@ public class BlocksCommonProxy{
 			}));
 		}
 	}
+	*/
 
 	public void RegisterBlocks(){
+		/*
 		registerBlock(essenceRefiner, "essenceRefiner");
 		registerBlock(blockMageTorch, "mageTorch");
 		registerBlock(essenceConduit, "essenceConduit");
 		registerBlock(obelisk, "obelisk");
 		registerBlock(calefactor, "calefactor");
-		registerBlock(keystoneRecepticle, "keystoneReceptacle");
+		*/
+		//registerBlock(keystoneRecepticle, "keystoneReceptacle");
+		/*
 		registerBlock(astralBarrier, "astralBarrier");
 		registerBlock(blackAurem, "blackAurem");
 		registerBlock(celestialPrism, "celestialPrism");
 		registerBlock(seerStone, "seerStone");
+		*/
+		/*
 		registerBlock(AMOres, OreItem.class, "vinteumOre");
 		registerBlock(cerublossom, "blueOrchid");
 		registerBlock(desertNova, "desertNova");
 		registerBlock(keystoneChest, "keystoneChest");
+		*/
+		/*
 		registerBlock(blockLectern, "blockLectern");
 		registerBlock(manaBattery, "manaBattery");
 		registerBlock(blockArcaneReconstructor, "blockArcaneReconstructor");
 		registerBlock(magicWall, "magicWall");
 		registerBlock(occulus, "occulus");
+		*/
+		/*
 		registerBlock(craftingAltar, "CraftingAltar");
 		registerBlock(spellRune, "SpellRune");
 		registerBlock(vinteumTorch, "VinteumTorch");
@@ -725,7 +786,9 @@ public class BlocksCommonProxy{
 		registerBlock(invisibleUtility, "invisibleUtility");
 		registerBlock(aum, "Aum");
 		registerBlock(tarmaRoot, "TarmaRoot");
+		*/
 		registerBlock(witchwoodLog, "WitchwoodLog");
+		/*
 		registerBlock(witchwoodLeaves, "WitchwoodLeaves");
 		registerBlock(summoner, "Summoner");
 		registerBlock(liquidEssence, "liquidEssence");
@@ -751,12 +814,14 @@ public class BlocksCommonProxy{
 		registerBlock(wakebloom, "wakebloom");
 		registerBlock(otherworldAura, "otherworldAura");
 		registerBlock(spellSealedDoor, "spellSealedDoor");
+		*/
 
 		//if you need a special item placer for the block, set it here instead of registering the block normally above
 		/*Item.itemsList[BlocksCommonProxy.witchwoodSingleSlab.blockID] = new ItemSlab(BlocksCommonProxy.witchwoodSingleSlab.blockID - 256, BlocksCommonProxy.witchwoodSingleSlab, BlocksCommonProxy.witchwoodDoubleSlab, false);
 		Item.itemsList[BlocksCommonProxy.witchwoodDoubleSlab.blockID] = new ItemSlab(BlocksCommonProxy.witchwoodDoubleSlab.blockID - 256, BlocksCommonProxy.witchwoodSingleSlab, BlocksCommonProxy.witchwoodDoubleSlab, true);
 		Item.itemsList[BlocksCommonProxy.illusionBlock.blockID] = (new ItemMultiTextureTile(BlocksCommonProxy.illusionBlock.blockID - 256, BlocksCommonProxy.illusionBlock, IllusionBlock.illusion_block_types)).setUnlocalizedName("arsmagica2:illusionBlock");
 		Item.itemsList[BlocksCommonProxy.crystalMarker.blockID] = (new ItemMultiTextureTile(BlocksCommonProxy.crystalMarker.blockID - 256, BlocksCommonProxy.crystalMarker, BlockCrystalMarker.crystalMarkerTypes)).setUnlocalizedName("arsmagica2:crystalMarker");*/
+		/*
 		registerMultiTextureBlock(witchwoodSingleSlab, "witchwoodSingleSlab", new ItemSlab(witchwoodSingleSlab, witchwoodSingleSlab, witchwoodDoubleSlab));
 		registerMultiTextureBlock(witchwoodDoubleSlab, "witchwoodDoubleSlab", new ItemSlab(witchwoodDoubleSlab, witchwoodSingleSlab, witchwoodDoubleSlab));
 		registerMultiTextureBlock(illusionBlock, "illusionBlock", new ItemMultiTexture(illusionBlock, illusionBlock, illusionBlock.illusion_block_types).setUnlocalizedName("arsmagica2:illusionBlock"));
@@ -766,11 +831,14 @@ public class BlocksCommonProxy{
 		arsMagicaBlocksList.add(crystalMarker);
 		arsMagicaBlocksList.add(witchwoodSingleSlab);
 		arsMagicaBlocksList.add(witchwoodDoubleSlab);
+		*/
 
 		OreDictionary.registerOre("logWood", witchwoodLog);
+		/*
 		OreDictionary.registerOre("stairWood", witchwoodStairs);
 		OreDictionary.registerOre("plankWood", witchwoodPlanks);
 		OreDictionary.registerOre("slabWood", witchwoodSingleSlab);
+		*/
 	}
 
 	private <T extends ItemBlock> void registerMultiTextureBlock(Block block, String unlocalizedName, T item){
@@ -799,6 +867,7 @@ public class BlocksCommonProxy{
 	}
 
 	public void RegisterTileEntities(){
+		/*
 		GameRegistry.registerTileEntity(TileEntityEssenceRefiner.class, "TileEntityEssenceRefiner");
 		GameRegistry.registerTileEntity(TileEntityEssenceConduit.class, "TileEntityEssenceConduit");
 		GameRegistry.registerTileEntity(TileEntityObelisk.class, "TileEntityObelisk");
@@ -833,6 +902,7 @@ public class BlocksCommonProxy{
 		GameRegistry.registerTileEntity(TileEntityCrystalMarkerSpellExport.class, "TileEntityCrystalMarkerSpellExport");
 		GameRegistry.registerTileEntity(TileEntityInertSpawner.class, "TileEntityInertSpawner");
 		GameRegistry.registerTileEntity(TileEntitySpellSealedDoor.class, "TileEntitySpellSealedDoor");
+		*/
 	}
 
 	public void registerRenderInformation(){

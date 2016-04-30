@@ -1,11 +1,14 @@
 package am2.proxy;
 
-import am2.AMClientEventHandler;
+//import am2.AMClientEventHandler;
 import am2.AMCore;
+/*
 import am2.AMKeyBindings;
 import am2.api.events.RegisterCompendiumEntries;
 import am2.api.events.RegisterSkillTreeIcons;
+*/
 import am2.api.math.AMVector3;
+/*
 import am2.api.power.IPowerNode;
 import am2.api.power.PowerTypes;
 import am2.api.spell.ItemSpellBase;
@@ -39,6 +42,7 @@ import am2.spell.components.Telekinesis;
 import am2.texture.SpellIconManager;
 import am2.utility.ProxyUtilitiesClient;
 import am2.utility.RenderUtilities;
+*/
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -71,16 +75,18 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class ClientProxy extends CommonProxy{
+	/*
 	public static SimpleBlockRenderHandler simpleBlockRenderHandler;
 	public static TechneBlockRenderHandler techneBlockRenderHandler;
 	private ClientTickHandler clientTickHandler;
 
 	public static HashMap<PowerTypes, ArrayList<LinkedList<AMVector3>>> powerPathVisuals;
-
+	*/
 	public ClientProxy(){
-		particleManager = new ParticleManagerClient();
+		//particleManager = new ParticleManagerClient();
 	}
 
+	/*
 	@Override
 	public void InitializeAndRegisterHandlers(){
 		guiManager = new ClientGuiManager();
@@ -93,7 +99,9 @@ public class ClientProxy extends CommonProxy{
 		MinecraftForge.EVENT_BUS.register(compendiumHandler);
 		FMLCommonHandler.instance().bus().register(compendiumHandler);
 	}
+	*/
 
+	/*
 	@Override
 	public void postinit(){
 		super.postinit();
@@ -105,7 +113,9 @@ public class ClientProxy extends CommonProxy{
 
 		FMLCommonHandler.instance().bus().register(new AMKeyBindings());
 	}
+	*/
 
+	/*
 	@Override
 	public void preinit(){
 		super.preinit();
@@ -113,12 +123,13 @@ public class ClientProxy extends CommonProxy{
 		blocks = new BlocksClientProxy();
 		BuffList.setupTextureOverrides();
 	}
+	*/
 
 	@Override
 	public void init(){
 		super.init();
 
-		entities.registerRenderInformation();
+		//entities.registerRenderInformation();
 		blocks.registerRenderInformation();
 
 		/*simpleBlockRenderHandler = new SimpleBlockRenderHandler();
@@ -141,17 +152,17 @@ public class ClientProxy extends CommonProxy{
 		MinecraftForgeClient.registerItemRenderer(ItemsCommonProxy.spell, SpellScrollRenderer.instance);
 		MinecraftForgeClient.registerItemRenderer(ItemsCommonProxy.spellBook, SpellScrollRenderer.instance);*/
 
-		ClientCommandHandler.instance.registerCommand(new ConfigureAMUICommand());
+		//ClientCommandHandler.instance.registerCommand(new ConfigureAMUICommand());
 	}
 
 	@Override
 	public void flashManaBar(){
-		AMGuiHelper.instance.flashManaBar();
+		//AMGuiHelper.instance.flashManaBar();
 	}
 
 	@Override
 	public void blackoutArmorPiece(EntityPlayerMP entity, int index, int duration){
-		AMGuiHelper.instance.blackoutArmorPiece(index, duration);
+		//AMGuiHelper.instance.blackoutArmorPiece(index, duration);
 	}
 
 	@Override
@@ -184,16 +195,18 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void openSkillTreeUI(World world, EntityPlayer player){
 		if (world.isRemote){
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSkillTrees(player));
+			//Minecraft.getMinecraft().displayGuiScreen(new GuiSkillTrees(player));
 		}
 	}
 
+	/*
 	@Override
 	public void openParticleBlockGUI(World world, EntityPlayer player, TileEntityParticleEmitter te){
 		if (world.isRemote){
 			Minecraft.getMinecraft().displayGuiScreen(new GuiParticleEmitter(te));
 		}
 	}
+	*/
 
 	@Override
 	public boolean setMouseDWheel(int dwheel){
@@ -203,20 +216,25 @@ public class ClientProxy extends CommonProxy{
 		if (stack == null) return false;
 
 		boolean store = checkForTKMove(stack);
+		/*
 		if (!store && stack.getItem() instanceof ItemSpellBook){
 			store = Minecraft.getMinecraft().thePlayer.isSneaking();
 		}
+		*/
 
+		/*
 		if (store){
 			clientTickHandler.setDWheel(dwheel / 120, Minecraft.getMinecraft().thePlayer.inventory.currentItem, Minecraft.getMinecraft().thePlayer.isUsingItem());
 			return true;
 		}else{
 			clientTickHandler.setDWheel(0, -1, false);
 		}
+		*/
 		return false;
 	}
 
 	private boolean checkForTKMove(ItemStack stack){
+		/*
 		if (stack.getItem() instanceof ItemSpellBook){
 			ItemStack activeStack = ((ItemSpellBook)stack.getItem()).GetActiveItemStack(stack);
 			if (activeStack != null)
@@ -229,12 +247,13 @@ public class ClientProxy extends CommonProxy{
 				}
 			}
 		}
+		*/
 		return false;
 	}
 
 	@Override
 	public void renderGameOverlay(){
-		clientTickHandler.renderOverlays();
+		//clientTickHandler.renderOverlays();
 	}
 
 	/* LOCALIZATION */
@@ -272,6 +291,7 @@ public class ClientProxy extends CommonProxy{
 		}
 	}*/
 
+	/*
 	@Override
 	public void setCompendiumSaveBase(String compendiumBase){
 		ArcaneCompendium.instance.setSaveLocation(compendiumBase);
@@ -291,12 +311,14 @@ public class ClientProxy extends CommonProxy{
 	public HashMap<PowerTypes, ArrayList<LinkedList<AMVector3>>> getPowerPathVisuals(){
 		return powerPathVisuals;
 	}
+	*/
 
 	@Override
 	public boolean isClientPlayer(EntityLivingBase ent){
 		return ent instanceof AbstractClientPlayer;
 	}
 
+	/*
 	@Override
 	public void setTrackedLocation(AMVector3 location){
 		clientTickHandler.setTrackLocation(location);
@@ -316,16 +338,19 @@ public class ClientProxy extends CommonProxy{
 	public PowerNodeEntry getTrackedData(){
 		return clientTickHandler.getTrackData();
 	}
+	*/
 
 	/**
 	 * Proxied compendium unlocks.  Do not call directly - use the CompendiumUnlockHandler instead.
 	 */
 	@Override
 	public void unlockCompendiumEntry(String id){
+		/*
 		if (ArcaneCompendium.instance.isCategory(id))
 			unlockCompendiumCategory(id);
 		else
 			ArcaneCompendium.instance.unlockEntry(id);
+			*/
 	}
 
 	/**
@@ -333,7 +358,7 @@ public class ClientProxy extends CommonProxy{
 	 */
 	@Override
 	public void unlockCompendiumCategory(String id){
-		ArcaneCompendium.instance.unlockCategory(id);
+		//ArcaneCompendium.instance.unlockCategory(id);
 	}
 
 	/*@Override
@@ -373,7 +398,7 @@ public class ClientProxy extends CommonProxy{
 	}*/
 
 	public void addDeferredTargetSet(EntityLiving ent, EntityLivingBase target){
-		clientTickHandler.addDeferredTarget(ent, target);
+		//clientTickHandler.addDeferredTarget(ent, target);
 	}
 
 	/*public void addDigParticle(World worldObj, int xCoord, int yCoord, int zCoord, Block block, int meta){
