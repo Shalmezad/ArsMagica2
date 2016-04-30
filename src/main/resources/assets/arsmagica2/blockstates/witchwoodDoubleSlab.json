@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "variant=false": { "model": "arsmagica2:witchwood_planks" },
+    "variant=true":    { "model": "arsmagica2:witchwood_planks" }
+  }
+}

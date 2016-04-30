@@ -1,7 +1,9 @@
 package am2.blocks;
 
-import am2.texture.ResourceManager;
+//import am2.texture.ResourceManager;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockOldLog;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -14,10 +16,10 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class WitchwoodPlanks extends BlockOldLog{
+public class WitchwoodPlanks extends Block{
 
 	public WitchwoodPlanks(){
-		super();
+		super(Material.wood);
 		this.setHardness(2.0f);
 		this.setResistance(2.0f);
 		this.setHarvestLevel("axe", 2);

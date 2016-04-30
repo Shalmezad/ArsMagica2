@@ -12,8 +12,8 @@ import am2.items.OreItem;
 import am2.spell.SkillManager;
 import am2.spell.components.Dig;
 import am2.utility.KeystoneUtilities;
-import am2.utility.RecipeUtilities;
 */
+import am2.utility.RecipeUtilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.BlockPos;
@@ -83,10 +83,12 @@ public class BlocksCommonProxy{
 	public static BlockInlay redstoneInlay;
 	public static BlockInlay ironInlay;
 	public static BlockInlay goldInlay;
+	*/
 	public static WitchwoodPlanks witchwoodPlanks;
 	public static WitchwoodSlabs witchwoodSingleSlab;
 	public static WitchwoodSlabs witchwoodDoubleSlab;
 	public static WitchwoodStairs witchwoodStairs;
+	/*
 	public static WitchwoodSapling witchwoodSapling;
 	public static BlockMagiciansWorkbench magiciansWorkbench;
 	public static BlockEverstone everstone;
@@ -237,10 +239,12 @@ public class BlocksCommonProxy{
 		redstoneInlay = (BlockInlay)new BlockInlay(BlockInlay.TYPE_REDSTONE).setRegistryName("arsmagica2:redstone_inlay").setCreativeTab(blockTab);
 		ironInlay = (BlockInlay)new BlockInlay(BlockInlay.TYPE_IRON).setRegistryName("arsmagica2:iron_inlay").setCreativeTab(blockTab);
 		goldInlay = (BlockInlay)new BlockInlay(BlockInlay.TYPE_GOLD).setRegistryName("arsmagica2:gold_inlay").setCreativeTab(blockTab);
+		*/
 		witchwoodPlanks = (WitchwoodPlanks)new WitchwoodPlanks().setRegistryName("arsmagica2:planksWitchwood").setCreativeTab(blockTab);
 		witchwoodSingleSlab = (WitchwoodSlabs)new WitchwoodSlabs(false).setRegistryName("arsmagica2:witchwoodSingleSlab").setCreativeTab(blockTab);
 		witchwoodDoubleSlab = (WitchwoodSlabs)new WitchwoodSlabs(true).setRegistryName("arsmagica2:witchwoodDoubleSlab");
 		//witchwoodStairs = (WitchwoodStairs)new WitchwoodStairs(witchwoodPlanks, 0).setRegistryName("arsmagica2:stairsWitchwood").setCreativeTab(blockTab);
+		/*
 		witchwoodSapling = (WitchwoodSapling)new WitchwoodSapling().setRegistryName("arsmagica2:saplingWitchwood").setCreativeTab(blockTab);
 		magiciansWorkbench = (BlockMagiciansWorkbench)new BlockMagiciansWorkbench().setRegistryName("arsmagica2:magiciansWorkbench").setCreativeTab(blockTab);
 		everstone = (BlockEverstone)new BlockEverstone().setRegistryName("arsmagica2:everstone").setCreativeTab(blockTab);
@@ -480,13 +484,12 @@ public class BlocksCommonProxy{
 				Character.valueOf('I'), illusionBlock,
 				Character.valueOf('C'), "gemChimerite"
 		}));
-
+		*/
 		GameRegistry.addRecipe(new ItemStack(witchwoodPlanks, 4), new Object[]{
 				"W",
 				Character.valueOf('W'), witchwoodLog
 		});
-		*/
-		/*
+
 		RecipeUtilities.addShapedRecipeFirst(recipes, new ItemStack(witchwoodSingleSlab, 6), new Object[]{
 				"WWW",
 				Character.valueOf('W'), witchwoodPlanks
@@ -498,7 +501,7 @@ public class BlocksCommonProxy{
 				"WWW",
 				Character.valueOf('W'), witchwoodPlanks
 		});
-		*/
+
 		/*
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(everstone), new Object[]{
 				" B ",
@@ -798,8 +801,10 @@ public class BlocksCommonProxy{
 		registerBlock(redstoneInlay, "redstoneInlay");
 		registerBlock(ironInlay, "ironInlay");
 		registerBlock(goldInlay, "goldInlay");
+		*/
 		registerBlock(witchwoodPlanks, "planksWitchwood");
-		registerBlock(witchwoodStairs, "stairsWitchwood");
+		//registerBlock(witchwoodStairs, "stairsWitchwood");
+		/*
 		registerBlock(witchwoodSapling, "saplingWitchwood");
 		registerBlock(magiciansWorkbench, "magiciansWorkbench");
 		registerBlock(everstone, "everstone");
@@ -824,24 +829,23 @@ public class BlocksCommonProxy{
 		Item.itemsList[BlocksCommonProxy.witchwoodDoubleSlab.blockID] = new ItemSlab(BlocksCommonProxy.witchwoodDoubleSlab.blockID - 256, BlocksCommonProxy.witchwoodSingleSlab, BlocksCommonProxy.witchwoodDoubleSlab, true);
 		Item.itemsList[BlocksCommonProxy.illusionBlock.blockID] = (new ItemMultiTextureTile(BlocksCommonProxy.illusionBlock.blockID - 256, BlocksCommonProxy.illusionBlock, IllusionBlock.illusion_block_types)).setUnlocalizedName("arsmagica2:illusionBlock");
 		Item.itemsList[BlocksCommonProxy.crystalMarker.blockID] = (new ItemMultiTextureTile(BlocksCommonProxy.crystalMarker.blockID - 256, BlocksCommonProxy.crystalMarker, BlockCrystalMarker.crystalMarkerTypes)).setUnlocalizedName("arsmagica2:crystalMarker");*/
-		/*
+
 		registerMultiTextureBlock(witchwoodSingleSlab, "witchwoodSingleSlab", new ItemSlab(witchwoodSingleSlab, witchwoodSingleSlab, witchwoodDoubleSlab));
 		registerMultiTextureBlock(witchwoodDoubleSlab, "witchwoodDoubleSlab", new ItemSlab(witchwoodDoubleSlab, witchwoodSingleSlab, witchwoodDoubleSlab));
+		/*
 		registerMultiTextureBlock(illusionBlock, "illusionBlock", new ItemMultiTexture(illusionBlock, illusionBlock, illusionBlock.illusion_block_types).setUnlocalizedName("arsmagica2:illusionBlock"));
 		registerMultiTextureBlock(crystalMarker, "crystalMarker", new ItemMultiTexture(crystalMarker, crystalMarker, crystalMarker.crystalMarkerTypes).setUnlocalizedName("arsmagica2:crystalMarker"));
 
 		arsMagicaBlocksList.add(illusionBlock);
 		arsMagicaBlocksList.add(crystalMarker);
+		*/
 		arsMagicaBlocksList.add(witchwoodSingleSlab);
 		arsMagicaBlocksList.add(witchwoodDoubleSlab);
-		*/
 
 		OreDictionary.registerOre("logWood", witchwoodLog);
-		/*
-		OreDictionary.registerOre("stairWood", witchwoodStairs);
+		//OreDictionary.registerOre("stairWood", witchwoodStairs);
 		OreDictionary.registerOre("plankWood", witchwoodPlanks);
 		OreDictionary.registerOre("slabWood", witchwoodSingleSlab);
-		*/
 	}
 
 	private <T extends ItemBlock> void registerMultiTextureBlock(Block block, String unlocalizedName, T item){
@@ -911,5 +915,7 @@ public class BlocksCommonProxy{
 	public void registerRenderInformation(){
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
 			.register(Item.getItemFromBlock(witchwoodLog), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodlog", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+				.register(Item.getItemFromBlock(witchwoodPlanks), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodplanks", "inventory"));
 	}
 }
