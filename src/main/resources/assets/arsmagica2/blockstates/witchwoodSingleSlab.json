@@ -1,6 +1,7 @@
 {
   "variants": {
-    "half=bottom,variant=false": { "model": "arsmagica2:witchwood_planks"  },
-    "half=top,variant=false": { "model": "arsmagica2:witchwood_planks"  }
+    "half=bottom": { "model": "arsmagica2:planksWitchwood"  },
+    "half=top": { "model": "arsmagica2:planksWitchwood"  },
+    "inventory": { "model": "arsmagica2:planksWitchwood"  }
   }
 }

@@ -1,15 +1,22 @@
 package am2.blocks;
 
-import am2.items.ItemsCommonProxy;
-import am2.texture.ResourceManager;
+//import am2.items.ItemsCommonProxy;
+//import am2.texture.ResourceManager;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockOre;
-import net.minecraft.client.renderer.texture.IIconRegister;
+//import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+//import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -20,11 +27,15 @@ import java.util.Random;
 
 public class BlockAMOre extends BlockOre{
 
-	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
+	public static final PropertyEnum<EnumOreType> ORE_TYPE = PropertyEnum.<EnumOreType>create("ore_type", EnumOreType.class);
+
+
+	//@SideOnly(Side.CLIENT)
+	//private IIcon[] icons;
 	@SideOnly(Side.CLIENT)
 	private String[] textures;
 
+	/*
 	public static final int META_VINTEUM_ORE = 0;
 	public static final int META_CHIMERITE_ORE = 1;
 	public static final int META_BLUE_TOPAZ_ORE = 2;
@@ -35,14 +46,80 @@ public class BlockAMOre extends BlockOre{
 	public static final int META_BLUE_TOPAZ_BLOCK = 7;
 	public static final int META_SUNSTONE_BLOCK = 8;
 	public static final int META_CHIMERITE_BLOCK = 9;
+	*/
 
 	public static final int NUM_TYPES = 10;
 
 	public BlockAMOre(){
 		super();
 		this.setHarvestLevel("pickaxe", 2);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(ORE_TYPE, EnumOreType.VINTEUM_ORE));
 	}
 
+	public IBlockState getStateFromMeta(int meta)
+	{
+		IBlockState iblockstate = this.getDefaultState();//.withProperty(VARIANT, BlockPlanks.EnumType.byMetadata((meta & 3) + 4));
+
+		switch (meta)
+		{
+		case 0:
+			iblockstate = iblockstate.withProperty(ORE_TYPE, EnumOreType.VINTEUM_ORE);
+			break;
+		default:
+			iblockstate = iblockstate.withProperty(ORE_TYPE, EnumOreType.CHIMERITE_ORE);
+		}
+
+		return iblockstate;
+	}
+
+
+	public int getMetaFromState(IBlockState state)
+	{
+		int i = 0;
+		switch (state.getValue(ORE_TYPE))
+		{
+		case VINTEUM_ORE:
+			i = 0;
+			break;
+		default:
+			i = 0;
+		}
+
+		return i;
+	}
+
+	protected BlockState createBlockState()
+	{
+		return new BlockState(this, new IProperty[] {ORE_TYPE});
+	}
+
+
+
+	public enum EnumOreType implements IStringSerializable
+	{
+		VINTEUM_ORE("vinteum_ore"),
+		CHIMERITE_ORE("chimerite_ore");
+
+		private final String name;
+
+		private EnumOreType(String name)
+		{
+			this.name = name;
+		}
+
+		public String toString()
+		{
+			return this.name;
+		}
+
+
+		public String getName()
+		{
+			return this.name;
+		}
+	}
+
+	/*
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
@@ -134,4 +211,5 @@ public class BlockAMOre extends BlockOre{
 		}
 		return 1;
 	}
+	*/
 }

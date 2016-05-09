@@ -8,7 +8,9 @@ import am2.api.math.AMVector3;
 import am2.blocks.liquid.BlockLiquidEssence;
 import am2.blocks.tileentities.*;
 import am2.items.ItemsCommonProxy;
+*/
 import am2.items.OreItem;
+/*
 import am2.spell.SkillManager;
 import am2.spell.components.Dig;
 import am2.utility.KeystoneUtilities;
@@ -52,8 +54,8 @@ public class BlocksCommonProxy{
 	//public static BlockKeystoneReceptacle keystoneRecepticle;
 	public static Block astralBarrier;
 	public static Block seerStone;
-	/*
 	public static BlockAMOre AMOres;
+	/*
 	public static AMFlower cerublossom;
 	public static BlockDesertNova desertNova;
 	public static BlockKeystoneChest keystoneChest;
@@ -212,7 +214,9 @@ public class BlocksCommonProxy{
 		blackAurem = new BlockEssenceGenerator(BlockEssenceGenerator.NEXUS_DARK).setUnlocalizedNameAndID("arsmagica2:blackaurem").setCreativeTab(blockTab);
 		seerStone = new BlockSeerStone().setUnlocalizedNameAndID("arsmagica2:blockseerstone").setCreativeTab(blockTab);
 		celestialPrism = new BlockEssenceGenerator(BlockEssenceGenerator.NEXUS_LIGHT).setUnlocalizedNameAndID("arsmagica2:celestialprism").setCreativeTab(blockTab);
+		*/
 		AMOres = (BlockAMOre)new BlockAMOre().setRegistryName("arsmagica2:ores").setHardness(3.0f).setResistance(3.0f).setCreativeTab(blockTab);
+		/*
 		cerublossom = (AMFlower)new AMFlower().setUnlocalizedNameAndID("arsmagica2:cerublossom").setLightLevel(0.325f).setCreativeTab(blockTab);
 		desertNova = (BlockDesertNova)new BlockDesertNova().setUnlocalizedNameAndID("arsmagica2:desert_nova").setCreativeTab(blockTab);
 		keystoneChest = (BlockKeystoneChest)new BlockKeystoneChest().setUnlocalizedNameAndID("arsmagica2:keystonechest").setCreativeTab(blockTab);
@@ -770,8 +774,9 @@ public class BlocksCommonProxy{
 		registerBlock(celestialPrism, "celestialPrism");
 		registerBlock(seerStone, "seerStone");
 		*/
-		/*
 		registerBlock(AMOres, OreItem.class, "vinteumOre");
+
+		/*
 		registerBlock(cerublossom, "blueOrchid");
 		registerBlock(desertNova, "desertNova");
 		registerBlock(keystoneChest, "keystoneChest");

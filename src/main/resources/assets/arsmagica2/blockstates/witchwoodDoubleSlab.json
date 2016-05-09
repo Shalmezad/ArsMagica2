@@ -1,6 +1,13 @@
 {
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "arsmagica2:planksWitchwood",
+    "textures": {}
+  },
   "variants": {
-    "variant=false": { "model": "arsmagica2:witchwood_planks" },
-    "variant=true":    { "model": "arsmagica2:witchwood_planks" }
+    "half=bottom": { "model": "arsmagica2:planksWitchwood"  },
+    "half=top": { "model": "arsmagica2:planksWitchwood"  },
+    "inventory": { "model": "arsmagica2:planksWitchwood"  }
   }
 }
