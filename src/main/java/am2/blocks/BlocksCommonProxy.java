@@ -17,6 +17,7 @@ import am2.utility.KeystoneUtilities;
 */
 import am2.utility.RecipeUtilities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.fml.common.registry.GameData;
@@ -215,7 +216,7 @@ public class BlocksCommonProxy{
 		seerStone = new BlockSeerStone().setUnlocalizedNameAndID("arsmagica2:blockseerstone").setCreativeTab(blockTab);
 		celestialPrism = new BlockEssenceGenerator(BlockEssenceGenerator.NEXUS_LIGHT).setUnlocalizedNameAndID("arsmagica2:celestialprism").setCreativeTab(blockTab);
 		*/
-		AMOres = (BlockAMOre)new BlockAMOre().setRegistryName("arsmagica2:ores").setHardness(3.0f).setResistance(3.0f).setCreativeTab(blockTab);
+		AMOres = (BlockAMOre)new BlockAMOre().setRegistryName("arsmagica2:ores").setCreativeTab(blockTab);
 		/*
 		cerublossom = (AMFlower)new AMFlower().setUnlocalizedNameAndID("arsmagica2:cerublossom").setLightLevel(0.325f).setCreativeTab(blockTab);
 		desertNova = (BlockDesertNova)new BlockDesertNova().setUnlocalizedNameAndID("arsmagica2:desert_nova").setCreativeTab(blockTab);
@@ -917,10 +918,14 @@ public class BlocksCommonProxy{
 		*/
 	}
 
-	public void registerRenderInformation(){
+	public void registerModels(){
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
 			.register(Item.getItemFromBlock(witchwoodLog), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodlog", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
 				.register(Item.getItemFromBlock(witchwoodPlanks), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodplanks", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+				.register(Item.getItemFromBlock(AMOres), 0, new ModelResourceLocation(AMCore.MOD_ID+":ores.0", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
+				.register(Item.getItemFromBlock(AMOres), 1, new ModelResourceLocation(AMCore.MOD_ID+":ores.1", "inventory"));
 	}
 }

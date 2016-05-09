@@ -130,7 +130,7 @@ public class ClientProxy extends CommonProxy{
 		super.init();
 
 		//entities.registerRenderInformation();
-		blocks.registerRenderInformation();
+		blocks.registerModels();
 
 		/*simpleBlockRenderHandler = new SimpleBlockRenderHandler();
 		RenderingRegistry.registerBlockHandler(blocks.commonBlockRenderID, simpleBlockRenderHandler);

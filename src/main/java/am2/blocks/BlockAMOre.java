@@ -48,13 +48,24 @@ public class BlockAMOre extends BlockOre{
 	public static final int META_CHIMERITE_BLOCK = 9;
 	*/
 
-	public static final int NUM_TYPES = 10;
+	public static final int NUM_TYPES = 2;//10;
 
 	public BlockAMOre(){
 		super();
 		this.setHarvestLevel("pickaxe", 2);
+		this.setHardness(3.0f);
+		this.setResistance(3.0f);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ORE_TYPE, EnumOreType.VINTEUM_ORE));
 		this.setUnlocalizedName("arsmagica2:ores");
+	}
+
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List<ItemStack> par3List){
+		for (int i = 0; i < NUM_TYPES; ++i){
+			par3List.add(new ItemStack(this, 1, i));
+		}
 	}
 
 	public IBlockState getStateFromMeta(int meta)
@@ -149,13 +160,6 @@ public class BlockAMOre extends BlockOre{
 		return icons[meta];
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List){
-		for (int i = 0; i < NUM_TYPES; ++i){
-			par3List.add(new ItemStack(this, 1, i));
-		}
-	}
 
 	@Override
 	public int damageDropped(int meta){
