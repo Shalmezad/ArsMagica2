@@ -3,7 +3,7 @@
     "defaults": {
         "transform": "forge:default-block",
         "model": "arsmagica2:planksWitchwood",
-        "textures": {"all": "minecraft:blocks/stone"}
+        "textures": {"all": "arsmagica2:blocks/plankWitchwood"}
     },
     "variants": {
         "normal":{ "model": "arsmagica2:planksWitchwood" },

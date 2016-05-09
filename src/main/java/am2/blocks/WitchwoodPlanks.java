@@ -23,6 +23,7 @@ public class WitchwoodPlanks extends Block{
 		this.setHardness(2.0f);
 		this.setResistance(2.0f);
 		this.setHarvestLevel("axe", 2);
+		setUnlocalizedName("arsmagica2:planksWitchwood");
 	}
 
 	@Override

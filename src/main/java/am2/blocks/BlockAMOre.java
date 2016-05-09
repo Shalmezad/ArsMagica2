@@ -54,11 +54,15 @@ public class BlockAMOre extends BlockOre{
 		super();
 		this.setHarvestLevel("pickaxe", 2);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ORE_TYPE, EnumOreType.VINTEUM_ORE));
+		this.setUnlocalizedName("arsmagica2:ores");
 	}
 
 	public IBlockState getStateFromMeta(int meta)
 	{
 		IBlockState iblockstate = this.getDefaultState();//.withProperty(VARIANT, BlockPlanks.EnumType.byMetadata((meta & 3) + 4));
+
+
+
 
 		switch (meta)
 		{

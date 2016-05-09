@@ -25,6 +25,7 @@ public class WitchwoodSlabs extends BlockSlab{
 		this.setHardness(2.0f);
 		this.setResistance(2.0f);
 		this.setHarvestLevel("axe", 2);
+		this.setUnlocalizedName("arsmagica2:slabWitchwood");
 		this.isDouble = par2;
 	}
 

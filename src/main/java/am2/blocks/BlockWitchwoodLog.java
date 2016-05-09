@@ -18,10 +18,10 @@ import java.util.Random;
 public class BlockWitchwoodLog extends BlockLog{
 	protected BlockWitchwoodLog(){
 		super();
-		setHardness(3.0f);
-		setResistance(3.0f);
-		setHarvestLevel("axe", 2);
-		setUnlocalizedName("arsmagica2:witchwoodlog");
+		this.setHardness(3.0f);
+		this.setResistance(3.0f);
+		this.setHarvestLevel("axe", 2);
+		this.setUnlocalizedName("arsmagica2:witchwoodlog");
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
 	}
 
