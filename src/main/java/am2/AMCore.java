@@ -1,33 +1,5 @@
 package am2;
 
-/*
-import am2.api.ArsMagicaApi;
-import am2.api.spell.enums.Affinity;
-import am2.armor.infusions.ImbuementRegistry;
-import am2.blocks.RecipesEssenceRefiner;
-import am2.blocks.liquid.BlockLiquidEssence;
-import am2.blocks.tileentities.flickers.*;
-import am2.buffs.BuffList;
-import am2.commands.*;
-import am2.configuration.SkillConfiguration;
-import am2.enchantments.AMEnchantmentHelper;
-import am2.entities.EntityManager;
-import am2.entities.SpawnBlacklists;
-import am2.interop.TC5Interop;
-import am2.items.ItemsCommonProxy;
-import am2.network.AMNetHandler;
-import am2.network.SeventhSanctum;
-import am2.playerextensions.AffinityData;
-import am2.playerextensions.ExtendedProperties;
-import am2.playerextensions.RiftStorage;
-import am2.playerextensions.SkillData;
-import am2.power.PowerNodeCache;
-import am2.spell.SkillManager;
-import am2.spell.SkillTreeManager;
-import am2.spell.SpellUtils;
-import am2.utility.KeystoneUtilities;
-import am2.worldgen.BiomeWitchwoodForest;
-*/
 import am2.configuration.AMConfig;
 import am2.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Loader;
@@ -61,7 +33,6 @@ public class AMCore{
 	public static final String MOD_LANGUAGE = "java";
 	public static final String NAME = "Ars Magica 2";
 	public static final String VERSION = "1.4.0.009";
-	//public static final String DEPENDENCIES = "required-after:AnimationAPI";
 	public static final String DEPENDENCIES = "";
 
 	@Instance(value = "arsmagica2")
@@ -71,7 +42,6 @@ public class AMCore{
 	public static CommonProxy proxy;
 
 	public static AMConfig config;
-	//public static SkillConfiguration skillConfig;
 	public static final int ANY_META = 32767;
 
 	private String compendiumBase;
@@ -89,14 +59,6 @@ public class AMCore{
 		configBase += File.separatorChar + "AM2" + File.separatorChar;
 
 		config = new AMConfig(new File(configBase + File.separatorChar + "AM2.cfg"));
-
-		/*
-		skillConfig = new SkillConfiguration(new File(configBase + "SkillConf.cfg"));
-
-		AMNetHandler.INSTANCE.init();
-		*/
-
-		//proxy.InitializeAndRegisterHandlers();
 		proxy.preinit();
 	}
 
@@ -112,10 +74,6 @@ public class AMCore{
 
 		FMLInterModComms.sendMessage("Waila", "register", "am2.interop.WailaSupport.callbackRegister");
         FMLInterModComms.sendMessage("Thaumcraft", "portableHoleBlacklist", "am2:everstone");
-
-		/*
-		ForgeChunkManager.setForcedChunkLoadingCallback(this, AMChunkLoader.INSTANCE);
-		*/
 		proxy.init();
 		initAPI();
 
