@@ -138,13 +138,14 @@ public class CommonProxy{
 		//ObeliskFuelHelper.instance.registerFuelType(new ItemStack(ItemsCommonProxy.itemAMBucket, 0, Short.MAX_VALUE), 2000);
 
 		//registerInfusions();
-	}
 
-	public void init(){
 		blocks.RegisterBlocks();
 		blocks.RegisterTileEntities();
 
 		blocks.InitRecipes();
+	}
+
+	public void init(){
 
 		/*
 		items.InitRecipes();

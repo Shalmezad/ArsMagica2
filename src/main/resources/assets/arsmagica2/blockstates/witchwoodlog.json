@@ -4,6 +4,7 @@
     "axis=z":     { "model": "arsmagica2:WitchwoodLog_Side" },
     "axis=x":     { "model": "arsmagica2:WitchwoodLog_Side", "y": 90 },
     "axis=none":   { "model": "arsmagica2:WitchwoodLog_Bark"},
-    "inventory":    { "model": "arsmagica2:WitchwoodLog" }
+    "inventory":    { "model": "arsmagica2:WitchwoodLog" },
+    "normal":    { "model": "arsmagica2:WitchwoodLog" }
   }
 }

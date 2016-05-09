@@ -2,6 +2,7 @@ package am2.blocks;
 
 //import am2.items.ItemsCommonProxy;
 //import am2.texture.ResourceManager;
+import am2.blocks.core.BlockVariant;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BlockAMOre extends BlockOre{
+public class BlockAMOre extends BlockOre implements BlockVariant{
 
 	public static final PropertyEnum<EnumOreType> ORE_TYPE = PropertyEnum.<EnumOreType>create("ore_type", EnumOreType.class);
 
@@ -108,6 +109,10 @@ public class BlockAMOre extends BlockOre{
 		return new BlockState(this, new IProperty[] {ORE_TYPE});
 	}
 
+	@Override
+	public int numVariants(){
+		return NUM_TYPES;
+	}
 
 
 	public enum EnumOreType implements IStringSerializable

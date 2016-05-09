@@ -9,6 +9,7 @@ import am2.blocks.liquid.BlockLiquidEssence;
 import am2.blocks.tileentities.*;
 import am2.items.ItemsCommonProxy;
 */
+import am2.blocks.core.BlockVariant;
 import am2.items.OreItem;
 /*
 import am2.spell.SkillManager;
@@ -919,13 +920,26 @@ public class BlocksCommonProxy{
 	}
 
 	public void registerModels(){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-			.register(Item.getItemFromBlock(witchwoodLog), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodlog", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-				.register(Item.getItemFromBlock(witchwoodPlanks), 0, new ModelResourceLocation(AMCore.MOD_ID+":witchwoodplanks", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-				.register(Item.getItemFromBlock(AMOres), 0, new ModelResourceLocation(AMCore.MOD_ID+":ores.0", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher()
-				.register(Item.getItemFromBlock(AMOres), 1, new ModelResourceLocation(AMCore.MOD_ID+":ores.1", "inventory"));
+		ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+
+		for(Block block : this.getArsMagicaBlocks())
+		{
+			Item item = Item.getItemFromBlock(block);
+			if(block instanceof BlockVariant)
+			{
+				//This has variants. Register each one.
+				for(int i=0; i< ((BlockVariant)block).numVariants(); i++)
+				{
+					ModelResourceLocation resourceLocation = new ModelResourceLocation(block.getUnlocalizedName() + "." + i, "inventory");
+					mesher.register(item, i, resourceLocation);
+				}
+			}
+			else
+			{
+				//This doesn't have variants. Just register with meta 0
+				ModelResourceLocation resourceLocation = new ModelResourceLocation(block.getUnlocalizedName(), "inventory");
+				mesher.register(item, 0, resourceLocation);
+			}
+		}
 	}
 }

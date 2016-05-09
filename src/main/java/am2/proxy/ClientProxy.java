@@ -115,22 +115,24 @@ public class ClientProxy extends CommonProxy{
 	}
 	*/
 
-	/*
+
 	@Override
 	public void preinit(){
 		super.preinit();
+		/*
 		utils = new ProxyUtilitiesClient();
 		blocks = new BlocksClientProxy();
 		BuffList.setupTextureOverrides();
+		*/
 	}
-	*/
+
 
 	@Override
 	public void init(){
 		super.init();
+		blocks.registerModels();
 
 		//entities.registerRenderInformation();
-		blocks.registerModels();
 
 		/*simpleBlockRenderHandler = new SimpleBlockRenderHandler();
 		RenderingRegistry.registerBlockHandler(blocks.commonBlockRenderID, simpleBlockRenderHandler);
