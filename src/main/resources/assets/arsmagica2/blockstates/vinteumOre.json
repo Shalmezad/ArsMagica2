@@ -7,11 +7,11 @@
   },
   "variants": {
     "ore_type":{
-      "chimerite_ore":{
-        "textures":{"all":"arsmagica2:blocks/oreblockchimerite"}
-      },
       "vinteum_ore":{
         "textures":{"all":"arsmagica2:blocks/orevinteum"}
+      },
+      "chimerite_ore":{
+        "textures":{"all":"arsmagica2:blocks/orechimerite"}
       }
     }
   }
