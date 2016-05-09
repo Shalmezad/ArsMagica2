@@ -35,6 +35,7 @@ public class AMCore{
 	public static final String VERSION = "1.4.0.009";
 	public static final String DEPENDENCIES = "";
 
+	@SuppressWarnings("unused") //Handled by FML
 	@Instance(value = "arsmagica2")
 	public static AMCore instance;
 
@@ -42,19 +43,17 @@ public class AMCore{
 	public static CommonProxy proxy;
 
 	public static AMConfig config;
-	public static final int ANY_META = 32767;
 
-	private String compendiumBase;
 
 	public AMCore(){
 	}
 
+	@SuppressWarnings("unused") //Handled by FML
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 
 		String configBase = event.getSuggestedConfigurationFile().getAbsolutePath();
 		configBase = popPathFolder(configBase);
-		compendiumBase = popPathFolder(configBase);
 
 		configBase += File.separatorChar + "AM2" + File.separatorChar;
 
@@ -69,6 +68,7 @@ public class AMCore{
 		return path.substring(0, lastIndex);
 	}
 
+	@SuppressWarnings("unused") //Handled by FML
 	@EventHandler
 	public void init(FMLInitializationEvent event){
 
@@ -83,116 +83,19 @@ public class AMCore{
 		}
 	}
 
+	@SuppressWarnings("unused") //Handled by FML
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
-		//Register Flicker Operators
-		//registerFlickerOperators();
 
-		//proxy.setCompendiumSaveBase(compendiumBase);
 		proxy.postinit();
 
 		if (config.retroactiveWorldgen()){
 			LogHelper.info("Retroactive Worldgen is enabled");
 		}
 
-		/*
-		FluidContainerRegistry.registerFluidContainer(
-				new FluidContainerData(
-						FluidRegistry.getFluidStack(BlockLiquidEssence.liquidEssenceFluid.getName(), FluidContainerRegistry.BUCKET_VOLUME),
-						new ItemStack(ItemsCommonProxy.itemAMBucket),
-						FluidContainerRegistry.EMPTY_BUCKET));
-
-		SeventhSanctum.instance.init();
-		*/
-		/*if (Loader.isModLoaded("BetterDungeons"))
-			BetterDungeons.init();*/
-		//if (Loader.isModLoaded("Thaumcraft"))
-		//	TC5Interop.initialize();
-		/*if (Loader.isModLoaded("MineFactoryReloaded"))
-			MFRInterop.init();*/
-
 	}
 
-	/*
-	private void registerFlickerOperators(){
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorItemTransport(),
-				Affinity.AIR
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorButchery(),
-				Affinity.FIRE, Affinity.LIFE
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorContainment(),
-				Affinity.AIR, Affinity.ENDER
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorFelledOak(),
-				Affinity.NATURE, Affinity.LIGHTNING
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorFlatLands(),
-				Affinity.EARTH, Affinity.ICE
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorGentleRains(),
-				Affinity.WATER
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorInterdiction(),
-				Affinity.AIR, Affinity.ARCANE
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorLight(),
-				Affinity.FIRE, Affinity.LIGHTNING
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorMoonstoneAttractor(),
-				Affinity.LIGHTNING, Affinity.ARCANE, Affinity.EARTH
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorNaturesBounty(),
-				Affinity.NATURE, Affinity.WATER, Affinity.LIFE
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorPackedEarth(),
-				Affinity.EARTH
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorProgeny(),
-				Affinity.LIFE
-		);
-		FlickerOperatorRegistry.instance.registerFlickerOperator(
-				new FlickerOperatorFishing(),
-				Affinity.WATER, Affinity.NATURE
-		);
-	}
-	*/
-
-	/*
-	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event){
-		ICommandManager commandManager = event.getServer().getCommandManager();
-		ServerCommandManager serverCommandManager = ((ServerCommandManager)commandManager);
-		serverCommandManager.registerCommand(new SetMagicLevelCommand());
-		serverCommandManager.registerCommand(new UnlockAugmentedCastingCommand());
-		serverCommandManager.registerCommand(new SetAffinityCommand());
-		serverCommandManager.registerCommand(new ShiftAffinityCommand());
-		serverCommandManager.registerCommand(new RecoverKeystoneCommand());
-		serverCommandManager.registerCommand(new RegisterTeamHostilityCommand());
-		serverCommandManager.registerCommand(new FillManaBarCommand());
-		serverCommandManager.registerCommand(new ReloadSkillTree());
-		serverCommandManager.registerCommand(new GiveSkillPoints());
-		serverCommandManager.registerCommand(new TakeSkillPoints());
-		serverCommandManager.registerCommand(new ClearKnownSpellParts());
-		serverCommandManager.registerCommand(new Explosions());
-		serverCommandManager.registerCommand(new DumpNBT());
-		serverCommandManager.registerCommand(new Respec());
-		serverCommandManager.registerCommand(new UnlockCompendiumEntry());
-	}
-	*/
-
+	@SuppressWarnings("unused") //Handled by FML
 	@EventHandler
 	public void serverStopping(FMLServerStoppingEvent event){
 		for (WorldServer ws : MinecraftServer.getServer().worldServers){
@@ -200,6 +103,7 @@ public class AMCore{
 		}
 	}
 
+	@SuppressWarnings("unused") //Handled by FML
 	@EventHandler
 	public void onIMCReceived(FMLInterModComms.IMCEvent event){
 		for (IMCMessage msg : event.getMessages()){

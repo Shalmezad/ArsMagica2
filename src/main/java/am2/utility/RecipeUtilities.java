@@ -1,84 +1,15 @@
 package am2.utility;
 
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class RecipeUtilities{
 
-	public static Object[] getRecipeItems(Object recipe){
-		if (recipe instanceof ShapedRecipes){
-			return getShapedRecipeItems((ShapedRecipes)recipe);
-		}else if (recipe instanceof ShapelessRecipes){
-			return getShapelessRecipeItems((ShapelessRecipes)recipe);
-		}else if (recipe instanceof ShapedOreRecipe){
-			return getShapedOreRecipeItems((ShapedOreRecipe)recipe);
-		}else if (recipe instanceof ShapelessOreRecipe){
-			return getShapelessOreRecipeItems((ShapelessOreRecipe)recipe);
-		}
-		return new Object[0];
-	}
-
-	private static Object[] getShapedRecipeItems(ShapedRecipes recipe){
-		return recipe.recipeItems;
-	}
-
-	private static Object[] getShapelessRecipeItems(ShapelessRecipes recipe){
-		return recipe.recipeItems.toArray();
-	}
-
-	private static Object[] getShapedOreRecipeItems(ShapedOreRecipe recipe){
-		Object[] components = ReflectionHelper.getPrivateValue(ShapedOreRecipe.class, recipe, 3);
-		return components;
-	}
-
-	private static Object[] getShapelessOreRecipeItems(ShapelessOreRecipe recipe){
-		ArrayList components = ReflectionHelper.getPrivateValue(ShapelessOreRecipe.class, recipe, 1);
-		return components.toArray();
-	}
-
-	public static IRecipe getRecipeFor(ItemStack item){
-
-		if (item == null || item.getItem() == null) return null;
-
-		try{
-			List list = CraftingManager.getInstance().getRecipeList();
-			ArrayList possibleRecipes = new ArrayList();
-			for (Object recipe : list){
-				if (recipe instanceof IRecipe){
-					ItemStack output = ((IRecipe)recipe).getRecipeOutput();
-					if (output == null) continue;
-					if (output.getItem() == item.getItem() && (output.getItemDamage() == Short.MAX_VALUE || output.getItemDamage() == item.getItemDamage())){
-						possibleRecipes.add(recipe);
-					}
-				}
-			}
-
-			if (possibleRecipes.size() > 0){
-				for (Object recipe : possibleRecipes){
-					if (((IRecipe)recipe).getRecipeOutput().getItemDamage() == item.getItemDamage()){
-						return (IRecipe)recipe;
-					}
-				}
-				return (IRecipe)possibleRecipes.get(0);
-			}
-		}catch (Throwable t){
-
-		}
-
-		return null;
-	}
 
 	public static void addShapedRecipeFirst(List recipeList, ItemStack itemstack, Object... objArray){
 		String var3 = "";
@@ -137,27 +68,5 @@ public class RecipeUtilities{
 		recipeList.add(0, var17);
 	}
 
-	public static void addShapelessRecipeFirst(List recipeList, ItemStack par1ItemStack, Object... par2ArrayOfObj){
-		ArrayList arraylist = new ArrayList();
-		Object[] aobject = par2ArrayOfObj;
-		int i = par2ArrayOfObj.length;
 
-		for (int j = 0; j < i; ++j){
-			Object object1 = aobject[j];
-
-			if (object1 instanceof ItemStack){
-				arraylist.add(((ItemStack)object1).copy());
-			}else if (object1 instanceof Item){
-				arraylist.add(new ItemStack((Item)object1));
-			}else{
-				if (!(object1 instanceof Block)){
-					throw new RuntimeException("Invalid shapeless recipy!");
-				}
-
-				arraylist.add(new ItemStack((Block)object1));
-			}
-		}
-
-		recipeList.add(0, new ShapelessRecipes(par1ItemStack, arraylist));
-	}
 }
