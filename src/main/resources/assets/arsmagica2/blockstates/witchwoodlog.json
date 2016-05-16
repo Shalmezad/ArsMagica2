@@ -1,10 +1,10 @@
 {
   "variants": {
-    "axis=y":    { "model": "arsmagica2:WitchwoodLog" },
+    "axis=y":    { "model": "arsmagica2:witchwood_log" },
     "axis=z":     { "model": "arsmagica2:WitchwoodLog_Side" },
     "axis=x":     { "model": "arsmagica2:WitchwoodLog_Side", "y": 90 },
-    "axis=none":   { "model": "arsmagica2:WitchwoodLog_Bark"},
-    "inventory":    { "model": "arsmagica2:WitchwoodLog" },
-    "normal":    { "model": "arsmagica2:WitchwoodLog" }
+    "axis=none":   { "model": "arsmagica2:witchwood_log_bark"},
+    "inventory":    { "model": "arsmagica2:witchwood_log" },
+    "normal":    { "model": "arsmagica2:witchwood_log" }
   }
 }

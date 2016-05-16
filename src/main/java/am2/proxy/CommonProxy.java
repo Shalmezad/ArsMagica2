@@ -3,6 +3,7 @@ package am2.proxy;
 import am2.*;
 import am2.api.math.AMVector3;
 import am2.blocks.BlocksCommonProxy;
+import am2.registry.ModBlocks;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -30,7 +31,6 @@ import java.util.LinkedList;
 public class CommonProxy{
 	private ArrayList<AMVector3> pendingFlickerLinks;
 
-	public BlocksCommonProxy blocks;
 	public static HashMap<String, String> teamHostility;
 	public NBTTagCompound cwCopyLoc;
 
@@ -50,10 +50,7 @@ public class CommonProxy{
 
 	public void preinit(){
 		AMCore.config.init();
-		blocks = new BlocksCommonProxy();
-		blocks.InstantiateBlocks();
-		blocks.RegisterBlocks();
-		blocks.RegisterTileEntities();
+		ModBlocks.createBlocks();
 	}
 
 	public void init(){

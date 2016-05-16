@@ -95,81 +95,10 @@ public class AMCore{
 
 	}
 
-	@SuppressWarnings("unused") //Handled by FML
-	@EventHandler
-	public void serverStopping(FMLServerStoppingEvent event){
-		for (WorldServer ws : MinecraftServer.getServer().worldServers){
-			//PowerNodeCache.instance.saveWorldToFile(ws);
-		}
-	}
 
-	@SuppressWarnings("unused") //Handled by FML
-	@EventHandler
-	public void onIMCReceived(FMLInterModComms.IMCEvent event){
-		for (IMCMessage msg : event.getMessages()){
-			if (msg.key == "dsb"){
-				LogHelper.info("Received dimension spawn blacklist IMC!  Processing.");
-				String[] split = msg.getStringValue().split("|");
-				if (split.length != 2){
-					LogHelper.warn("Could not parse dsb IMC - malformed identifiers!  Syntax is 'ClassName|DimensionID', for example:  EntityDryad|22");
-					continue;
-				}
-				try{
-					//SpawnBlacklists.addBlacklistedDimensionSpawn(split[0], Integer.parseInt(split[1]));
-				}catch (NumberFormatException nex){
-					LogHelper.warn("Could not parse dsb IMC - improper dimension ID (not a number)!  Syntax is 'ClassName|DimensionID', for example:  EntityDryad|22");
-				}
-			}else if (msg.key == "bsb"){
-				LogHelper.info("Received biome spawn blacklist IMC!  Processing.");
-				String[] split = msg.getStringValue().split("|");
-				if (split.length != 2){
-					LogHelper.warn("Could not parse bsb IMC - malformed identifiers!  Syntax is 'ClassName|BiomeID', for example:  EntityDryad|22");
-					continue;
-				}
-				try{
-					//SpawnBlacklists.addBlacklistedBiomeSpawn(split[0], Integer.parseInt(split[1]));
-				}catch (NumberFormatException nex){
-					LogHelper.warn("Could not parse bsb IMC - improper biome ID (not a number)!  Syntax is 'ClassName|BiomeID', for example:  EntityDryad|22");
-				}
-			}else if (msg.key == "dwg"){
-				LogHelper.info("Received dimension worldgen blacklist IMC!  Processing.");
-				try{
-					//SpawnBlacklists.addBlacklistedDimensionForWorldgen(Integer.parseInt(msg.getStringValue()));
-				}catch (NumberFormatException nex){
-					LogHelper.warn("Could not parse dwg IMC - improper dimension ID (not a number)!  Syntax is 'dimensionID', for example:  2");
-				}
-			}else if (msg.key == "adb"){
-				LogHelper.info("Received dispel blacklist IMC!  Processing.");
-				try{
-					//BuffList.instance.addDispelExclusion(new ResourceLocation(msg.getStringValue()));
-				}catch (NumberFormatException nex){
-					LogHelper.warn("Could not parse adb IMC - improper potion ID (not a number)!  Syntax is 'potionID', for example:  10");
-				}
-			}
-		}
-	}
 
 	public void initAPI(){
 		LogHelper.info("Initializing API Hooks...");
-		/*
-		ArsMagicaApi.instance.setSpellPartManager(SkillManager.instance);
-		ArsMagicaApi.instance.setEnchantmentHelper(new AMEnchantmentHelper());
-		ArsMagicaApi.instance.setSkillTreeManager(SkillTreeManager.instance);
-		ArsMagicaApi.instance.setKeystoneHelper(KeystoneUtilities.instance);
-		ArsMagicaApi.instance.setEntityManager(EntityManager.instance);
-		ArsMagicaApi.instance.setObeliskFuelHelper(ObeliskFuelHelper.instance);
-		ArsMagicaApi.instance.setFlickerOperatorRegistry(FlickerOperatorRegistry.instance);
-		ArsMagicaApi.instance.setInfusionRegistry(ImbuementRegistry.instance);
-		ArsMagicaApi.instance.setEssenceRecipeHandler(RecipesEssenceRefiner.essenceRefinement());
-		ArsMagicaApi.instance.setColourblindMode(config.colourblindMode());
-		ArsMagicaApi.instance.setBuffHelper(BuffList.instance);
-		ArsMagicaApi.instance.setSpellUtils(SpellUtils.instance);
-
-		ArsMagicaApi.instance.setAffinityDataID(AffinityData.identifier);
-		ArsMagicaApi.instance.setSkillDataID(SkillData.identifier);
-		ArsMagicaApi.instance.setExtendedPropertiesID(ExtendedProperties.identifier);
-		ArsMagicaApi.instance.setRiftStorageID(RiftStorage.identifier);
-		*/
 		LogHelper.info("Finished API Initialization");
 	}
 

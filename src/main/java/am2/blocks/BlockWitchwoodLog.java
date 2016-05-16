@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockWitchwoodLog extends BlockLog{
-	protected BlockWitchwoodLog(){
+	public BlockWitchwoodLog(){
 		super();
 		this.setHardness(3.0f);
 		this.setResistance(3.0f);
