@@ -22,6 +22,7 @@ public class BlockWitchwoodLog extends BlockLog{
 		this.setResistance(3.0f);
 		this.setHarvestLevel("axe", 2);
 		this.setUnlocalizedName("arsmagica2:witchwoodlog");
+		this.setRegistryName("arsmagica2","WitchwoodLog");
 		this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
 	}
 

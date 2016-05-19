@@ -20,7 +20,7 @@ apply from: 'https://raw.githubusercontent.com/dsirius/Gradle-repo/1.8.9/index/i
 
 jar {
 	manifest {
-		attributes 'FMLCorePlugin' : 'am2.preloader.AM2PreloaderContainer'
+		//attributes 'FMLCorePlugin' : 'am2.preloader.AM2PreloaderContainer'
 		attributes 'FMLCorePluginContainsFMLMod' : 'true'
 	}
 }

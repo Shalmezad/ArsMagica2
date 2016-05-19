@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks{
@@ -17,7 +18,7 @@ public class ModBlocks{
 	public static void createBlocks()
 	{
 		witchwoodLog = new BlockWitchwoodLog();
-		GameRegistry.registerBlock(witchwoodLog,"WitchwoodLog");
+		GameRegistry.registerBlock(witchwoodLog);
 	}
 
 	public static void registerBlockModels()
@@ -27,14 +28,16 @@ public class ModBlocks{
 
 	private static void registerBlockModel(Block block)
 	{
-		Minecraft minecraft = Minecraft.getMinecraft();
-		RenderItem renderItem = minecraft.getRenderItem();
-		ItemModelMesher itemModelMesher = renderItem.getItemModelMesher();
+		//Minecraft minecraft = Minecraft.getMinecraft();
+		//RenderItem renderItem = minecraft.getRenderItem();
+		//ItemModelMesher itemModelMesher = renderItem.getItemModelMesher();
 
 		Item item = Item.getItemFromBlock(block);
 		ModelResourceLocation modelResourceLocation;
-		modelResourceLocation = new ModelResourceLocation(AMCore.MOD_ID + ":" + block.getUnlocalizedName().substring(5), "inventory");
-		itemModelMesher.register(item, 0, modelResourceLocation);
+		//modelResourceLocation = new ModelResourceLocation(AMCore.MOD_ID + ":" + block.getRegistryName(), "inventory");
+		modelResourceLocation = new ModelResourceLocation(block.getRegistryName(), "inventory");
+		//itemModelMesher.register(item, 0, modelResourceLocation);
+		ModelLoader.setCustomModelResourceLocation(item, 0, modelResourceLocation);
 	}
 
 }

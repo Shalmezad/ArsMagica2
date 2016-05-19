@@ -1,7 +1,0 @@
-{
-  "parent": "block/column_side",
-  "textures": {
-    "end": "arsmagica2:blocks/WitchwoodTop",
-    "side": "arsmagica2:blocks/WitchwoodLog"
-  }
-}

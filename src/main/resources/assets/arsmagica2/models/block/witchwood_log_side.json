@@ -1,5 +1,5 @@
 {
-  "parent": "block/cube_column",
+  "parent": "block/column_side",
   "textures": {
     "end": "arsmagica2:blocks/witchwood_top",
     "side": "arsmagica2:blocks/witchwood_log"

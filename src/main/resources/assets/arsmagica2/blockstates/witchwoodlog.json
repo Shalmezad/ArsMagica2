@@ -1,10 +1,18 @@
 {
+  "forge_marker": 1,
+  "defaults": {
+    "model": "arsmagica2:witchwood_log",
+    "textures": {
+      "all": "arsmagica2:blocks/witchwood_log"
+    },
+    "transform": "forge:default-block"
+  },
   "variants": {
     "axis=y":    { "model": "arsmagica2:witchwood_log" },
-    "axis=z":     { "model": "arsmagica2:WitchwoodLog_Side" },
-    "axis=x":     { "model": "arsmagica2:WitchwoodLog_Side", "y": 90 },
+    "axis=z":     { "model": "arsmagica2:witchwood_log_side" },
+    "axis=x":     { "model": "arsmagica2:witchwood_log_side", "y": 90 },
     "axis=none":   { "model": "arsmagica2:witchwood_log_bark"},
-    "inventory":    { "model": "arsmagica2:witchwood_log" },
-    "normal":    { "model": "arsmagica2:witchwood_log" }
+    "normal": [{}] ,
+    "inventory": [{}]
   }
 }

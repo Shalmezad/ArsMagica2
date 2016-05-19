@@ -1,8 +1,8 @@
 
 compile:
-	./gradlew build
+	./gradlew build --offline
 test:
-	./gradlew runClient
+	./gradlew runClient --offline
 setup:
 	export GRADLE_OPTS=-Xmx2G
 	./gradlew setupDecompWorkspace --stacktrace
