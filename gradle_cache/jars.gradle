@@ -1,0 +1,98 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'org.ajoberstar:gradle-git:1.3.2'
+        classpath 'org.ajoberstar:grgit:1.4.1'
+    }
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: 'javadoc') {
+     from javadoc.destinationDir
+     if (project.hasProperty("dev") && project.getProperty("dev") == "true") 
+        classifier = "javadoc-dev"
+     else 
+        classifier = "javadoc"
+     //sets where the jars go to.
+     destinationDir = file 'output'
+     mustRunAfter "jar"
+}
+
+task deobfJar(type: Jar) {
+    dependsOn javadoc
+    from sourceSets.main.output
+    if (project.hasProperty("dev") && project.getProperty("dev") == "true") 
+       classifier = "deobf-dev"
+    else 
+       classifier = "deobf"
+    from javadoc.destinationDir
+    //sets where the jars go to.
+    destinationDir = file 'output'
+    mustRunAfter "jar"
+}
+
+task sourcesJar(type: Jar) {
+     from sourceSets.main.allJava
+     if (project.hasProperty("dev") && project.getProperty("dev") == "true") 
+     classifier = "src-dev"
+     else 
+        classifier = "src"
+     //sets where the jars go to.
+     destinationDir = file 'output'
+     mustRunAfter "jar"
+}
+
+//copies the build.properties to the output dir for maven publishing.
+task copyBuildXml(type: Copy) {
+     from 'gradle.properties'
+     into 'output'
+}
+
+def currentJvm = org.gradle.internal.jvm.Jvm.current()
+println "Current Java version = " + currentJvm
+
+import org.ajoberstar.grgit.*
+
+def gitHash = 'unknown'
+if (new File(projectDir, '.git').exists()) {
+    def repo = Grgit.open(project.file('.'))
+    gitHash = repo.log().find().abbreviatedId
+}
+
+jar {
+     dependsOn copyBuildXml
+     //if project has the property BBM-Dev then it appends dev to indicate the dev branch
+     if (project.hasProperty("dev") && project.getProperty("dev") == "true") 
+        classifier = "dev-universal"
+     else  
+        classifier = "universal"
+     //sets where the jars go to.
+     destinationDir = file 'output'
+     manifest.mainAttributes(
+            "Built-By": System.getProperty('user.name'),
+            "Created-By": currentJvm,
+            "Implementation-Title": archivesBaseName,
+            "Implementation-Version": project.version,
+            "Git-Hash": gitHash,
+     )
+     
+}
+
+task printDependencies {
+    //dumpes what the project was compiled with into a text file.
+    doLast {
+         file("CompiledWith.txt").text = configurations.compile.collect { it.getName() };
+     }
+     mustRunAfter "jar"
+}
+
+tasks.build.dependsOn javadocJar, sourcesJar, deobfJar, printDependencies

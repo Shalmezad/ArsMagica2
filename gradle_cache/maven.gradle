@@ -1,0 +1,56 @@
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        mavenJava(MavenPublication)
+        {
+            artifact jar
+            artifact deobfJar
+            artifact javadocJar
+            artifact sourcesJar
+            artifact("output/gradle.properties") {
+                classifier "gradle"
+                extension "properties"
+            }
+			if (project.hasProperty("minecraft"))
+                artifact ("CompiledWith.txt") {
+                    classifier "CompiledWith"
+                    extension "txt"
+                }
+            if (project.hasProperty("bambooBuildNumber"))
+                if (project.hasProperty("changelog") && project.getProperty("changelog") == "true")
+                    artifact ("$changeLogfile") {
+                        classifier "changelog"
+                        extension "xml"
+                    }
+        }
+        myPublication(MavenPublication) {
+            from components.java
+            pom.withXml {
+                asNode().appendNode('description', 'Created on ' + getDate())
+            }
+        }
+}
+
+    repositories {
+        maven {
+            //checks for a the local property as a gradle argument and if exists outputs to a local dir.
+            if (project.hasProperty("local") && project.getProperty("local") == "true")
+                url "file:" + projectDir.path + "/build/maven"
+            //Posts the artifacts to default nigix.
+            else if (project.hasProperty("nigix") && project.getProperty("nigix") == "true")
+                url "file:///usr/share/nginx/html/maven"
+            //Allows for custom maven url.
+            else if (project.hasProperty("custom") && project.getProperty("custom") == "true")
+                url "file://" + project.customMaven
+            //Posts to default Apache.
+            else
+                url "file:///var/www/maven"
+        }
+    }
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}

@@ -1,0 +1,7 @@
+if (project.hasProperty("dev") && project.getProperty("dev") == "true") { // TODO BBM-Dev
+    group = "dev.${org}.${groupid}"
+    archivesBaseName = "${archivebase}"
+} else {
+    group = "com.${org}.${groupid}"
+    archivesBaseName = "${archivebase}"
+}

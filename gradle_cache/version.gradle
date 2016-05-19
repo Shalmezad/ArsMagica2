@@ -1,0 +1,18 @@
+//Checks if a project has a property called minecraft.
+if (project.hasProperty("minecraft")) {
+    version = "${project.minecraft.version}-${version_major}.${version_minor}.${version_revis}b" + getBuildNumber()
+}
+else 
+    (
+    version = "${version_major}.${version_minor}.${version_revis}b" + getBuildNumber()
+    )
+
+println "version = "+ version
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}
+
+file("${archivebase}.txt").text = version;

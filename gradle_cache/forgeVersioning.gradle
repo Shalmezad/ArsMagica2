@@ -1,0 +1,7 @@
+def forgeV = minecraft.forgeVersion
+
+println forgeV
+
+minecraft {
+    replace "required-after:Forge", "required-after:Forge@[$forgeV,)"
+}

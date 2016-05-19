@@ -16,7 +16,9 @@ buildscript {
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply from: 'https://raw.githubusercontent.com/dsirius/Gradle-repo/1.8.9/index/index.gradle'
+//apply from: 'https://raw.githubusercontent.com/dsirius/Gradle-repo/1.8.9/index/index.gradle'
+//Offline mode:
+apply from: 'gradle_cache/index.gradle'
 
 jar {
 	manifest {
