@@ -45,12 +45,6 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preinit(){
 		super.preinit();
-
-		Item itemBlockSimple = GameRegistry.findItem("arsmagica2", "mbe01_block_simple");
-		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation("arsmagica2:mbe01_block_simple", "inventory");
-		final int DEFAULT_ITEM_SUBTYPE = 0;
-		ModelLoader.setCustomModelResourceLocation(itemBlockSimple, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
-
 		ModBlocks.registerBlockModels();
 	}
 
