@@ -3,10 +3,14 @@ package am2.proxy;
 import am2.AMCore;
 import am2.api.math.AMVector3;
 import am2.registry.ModBlocks;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -41,6 +45,11 @@ public class ClientProxy extends CommonProxy{
 	@Override
 	public void preinit(){
 		super.preinit();
+
+		Item itemBlockSimple = GameRegistry.findItem("arsmagica2", "mbe01_block_simple");
+		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation("arsmagica2:mbe01_block_simple", "inventory");
+		final int DEFAULT_ITEM_SUBTYPE = 0;
+		ModelLoader.setCustomModelResourceLocation(itemBlockSimple, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
 	}
 
 

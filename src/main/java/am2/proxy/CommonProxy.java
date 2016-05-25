@@ -2,6 +2,7 @@ package am2.proxy;
 
 import am2.*;
 import am2.api.math.AMVector3;
+import am2.blocks.BlockSimple;
 import am2.blocks.BlocksCommonProxy;
 import am2.registry.ModBlocks;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -29,6 +30,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class CommonProxy{
+
+	public static BlockSimple blockSimple;  // this holds the unique instance of your block
+
 	private ArrayList<AMVector3> pendingFlickerLinks;
 
 	public static HashMap<String, String> teamHostility;
@@ -51,6 +55,10 @@ public class CommonProxy{
 	public void preinit(){
 		AMCore.config.init();
 		ModBlocks.createBlocks();
+
+		blockSimple = (BlockSimple)(new BlockSimple().setUnlocalizedName("mbe01_block_simple"));
+		GameRegistry.registerBlock(blockSimple, "mbe01_block_simple");
+
 	}
 
 	public void init(){
