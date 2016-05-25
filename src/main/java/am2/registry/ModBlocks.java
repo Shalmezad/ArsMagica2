@@ -3,6 +3,7 @@ package am2.registry;
 import am2.AMCore;
 import am2.blocks.BlockAMOre;
 import am2.blocks.BlockWitchwoodLog;
+import am2.blocks.core.BlockVariant;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
@@ -36,7 +37,17 @@ public class ModBlocks{
 		Item item = Item.getItemFromBlock(block);
 		ModelResourceLocation modelResourceLocation;
 		modelResourceLocation = new ModelResourceLocation(block.getRegistryName(), "inventory");
-		ModelLoader.setCustomModelResourceLocation(item, 0, modelResourceLocation);
+		if(block instanceof BlockVariant)
+		{
+			for(int i=0; i<((BlockVariant)block).numVariants(); i++)
+			{
+				ModelLoader.setCustomModelResourceLocation(item, i, modelResourceLocation);
+			}
+		}
+		else
+		{
+			ModelLoader.setCustomModelResourceLocation(item, 0, modelResourceLocation);
+		}
 	}
 
 }
