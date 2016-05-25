@@ -12,7 +12,8 @@
       },
       "chimerite_ore":{
         "textures":{"all":"arsmagica2:blocks/orechimerite"}
-      }
+      },
+      "inventory": [{}]
     }
   }
 }

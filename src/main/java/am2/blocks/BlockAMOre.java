@@ -38,6 +38,7 @@ public class BlockAMOre extends BlockOre implements BlockVariant{
 		this.setResistance(3.0f);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ORE_TYPE, EnumOreType.VINTEUM_ORE));
 		this.setUnlocalizedName("arsmagica2:ores");
+		this.setRegistryName("arsmagica2","ores");
 	}
 
 

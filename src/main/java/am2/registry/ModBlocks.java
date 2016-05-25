@@ -1,6 +1,7 @@
 package am2.registry;
 
 import am2.AMCore;
+import am2.blocks.BlockAMOre;
 import am2.blocks.BlockWitchwoodLog;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -14,29 +15,27 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModBlocks{
 
 	public static Block witchwoodLog;
+	public static Block amOre;
 
 	public static void createBlocks()
 	{
 		witchwoodLog = new BlockWitchwoodLog();
 		GameRegistry.registerBlock(witchwoodLog);
+		amOre = new BlockAMOre();
+		GameRegistry.registerBlock(amOre);
 	}
 
 	public static void registerBlockModels()
 	{
 		registerBlockModel(witchwoodLog);
+		registerBlockModel(amOre);
 	}
 
 	private static void registerBlockModel(Block block)
 	{
-		//Minecraft minecraft = Minecraft.getMinecraft();
-		//RenderItem renderItem = minecraft.getRenderItem();
-		//ItemModelMesher itemModelMesher = renderItem.getItemModelMesher();
-
 		Item item = Item.getItemFromBlock(block);
 		ModelResourceLocation modelResourceLocation;
-		//modelResourceLocation = new ModelResourceLocation(AMCore.MOD_ID + ":" + block.getRegistryName(), "inventory");
 		modelResourceLocation = new ModelResourceLocation(block.getRegistryName(), "inventory");
-		//itemModelMesher.register(item, 0, modelResourceLocation);
 		ModelLoader.setCustomModelResourceLocation(item, 0, modelResourceLocation);
 	}
 
