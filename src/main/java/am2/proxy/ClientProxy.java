@@ -50,13 +50,14 @@ public class ClientProxy extends CommonProxy{
 		ModelResourceLocation itemModelResourceLocation = new ModelResourceLocation("arsmagica2:mbe01_block_simple", "inventory");
 		final int DEFAULT_ITEM_SUBTYPE = 0;
 		ModelLoader.setCustomModelResourceLocation(itemBlockSimple, DEFAULT_ITEM_SUBTYPE, itemModelResourceLocation);
+
+		ModBlocks.registerBlockModels();
 	}
 
 
 	@Override
 	public void init(){
 		super.init();
-		ModBlocks.registerBlockModels();
 	}
 
 
